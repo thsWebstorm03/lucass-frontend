@@ -37,13 +37,14 @@ const AuthProvider = ({ children }) => {
       if (storedToken) {
         setLoading(true)
         fetch(BASE_URL + authConfig.meEndpoint, {
+          mode: 'no-cors',
           headers: {
-            Authorization: storedToken
+            'Authorization': storedToken,
+            'Access-Control-Allow-Origin':'*',
           }
         })
           .then((response) => response.json())
           .then(async response => {
-            console.log(response.data, "MLMLMLMLMLM")
             setLoading(false)
             const user = { ...response.data }
             setUser({
@@ -74,8 +75,9 @@ const AuthProvider = ({ children }) => {
   const handleLogin = (params, errorCallback, successCallback) => {
     const customHeaders = {
       "Content-Type": "application/json",
+      'Access-Control-Allow-Origin':'*',
     }
-    fetch(BASE_URL + authConfig.loginEndpoint, { method: "POST", headers: customHeaders, body: JSON.stringify(params) })
+    fetch(BASE_URL + authConfig.loginEndpoint, { method: "POST", headers: customHeaders, mode: 'no-cors', body: JSON.stringify(params) })
       .then((res) => res.json())
       .then((data) => {
         successCallback()
@@ -109,8 +111,9 @@ const AuthProvider = ({ children }) => {
   const handleRegister = (params, errorCallback, successCallback) => {
     const customHeaders = {
       "Content-Type": "application/json",
+      'Access-Control-Allow-Origin':'*',
     }
-    fetch(BASE_URL + authConfig.registerEndpoint, { method: "POST", headers: customHeaders, body: JSON.stringify(params) })
+    fetch(BASE_URL + authConfig.registerEndpoint, { method: "POST", headers: customHeaders, mode: 'no-cors', body: JSON.stringify(params) })
       .then((res) => res.json())
       .then(data => { console.log (data, "HHHHHHHHH")
         if (successCallback) successCallback()
