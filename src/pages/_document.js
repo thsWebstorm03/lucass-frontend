@@ -29,10 +29,6 @@ class CustomDocument extends Document {
           <Main />
           <script src={`${PUBLIC_URL}` + 'js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'}></script>
           <script src={`${PUBLIC_URL}` + 'js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'}></script>
-          {/* <script src={`${PUBLIC_URL}` + 'js/vendor/rellax/rellax.min.js'}></script> */}
-          {/* <script src={`${PUBLIC_URL}` + 'js/vendor/@lottiefiles/lottie-player/dist/lottie-player.js'}></script> */}
-          {/* <script src={`${PUBLIC_URL}` + 'js/vendor/swiper/swiper-bundle.min.js'}></script> */}
-
           <script src={`${PUBLIC_URL}` + 'js/theme.min.js'}></script>
           <NextScript />
         </body>

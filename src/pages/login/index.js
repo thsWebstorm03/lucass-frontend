@@ -132,7 +132,7 @@ const LoginPage = () => {
             width: isActive ? '25px' : '5px',
             background: 'rgb(188 58 255)',
             borderRadius: '10px',
-            marginTop: '-20px',
+            
          }}
       ></span>
    )
@@ -167,63 +167,262 @@ const LoginPage = () => {
                   aria-expanded='false'>
                   <span className='navbar-toggler-icon'></span>
                </button>
-               <nav id='navbarCollapse1' className='collapse navbar-collapse'>
+               <nav id='navbarCollapse1' className='collapse navbar-collapse ms-3'>
                   <hr className='d-lg-none mt-3 mb-2' />
                   <ul className='navbar-nav me-auto'>
                      <li className='nav-item'>
-                        <a href='#' className='nav-link active'>
+                        <a href='/login' className='nav-link active'>
                            Home
                         </a>
                      </li>
                      <li className='nav-item dropdown'>
                         <a
-                           href='#'
+                           href='/dashboards/library'
                            className='nav-link dropdown-toggle'
                            data-bs-toggle='dropdown'
                            data-bs-auto-close='outside'
                            aria-expanded='false'>
-                           Tools
+                           TooLs
                         </a>
-                        <ul className='dropdown-menu'>
-                           <li>
-                              <a href='#' className='dropdown-item'>
-                                 Blog ideas
-                              </a>
-                           </li>
-                           <li>
-                              <a href='#' className='dropdown-item'>
-                                 Blog intro
-                              </a>
-                           </li>
-                        </ul>
-                     </li>
-                     <li className='nav-item'>
-                        <a href='#' className='nav-link'>
-                           Pricing
-                        </a>
-                     </li>
-                     <li className='nav-item dropdown'>
-                        <a
-                           href='#'
-                           className='nav-link dropdown-toggle'
-                           data-bs-toggle='dropdown'
-                           data-bs-auto-close='outside'
-                           aria-expanded='false'>
-                           Use Cases
-                        </a>
-                        <ul className='dropdown-menu'>
-                           <li>
-                              <a href='#' className='dropdown-item'>
+                        <ul className='dropdown-menu dropdown'>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/blog-tools/blog-ideas'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
                                  Blog tools
                               </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
+                                       Blog ideas
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/blog-tools/blog-intro' className='dropdown-item'>
+                                       Blog intro
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/blog-tools/keyword-generator' className='dropdown-item'>
+                                    Keyword generator
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/blog-tools/test-adir' className='dropdown-item'>
+                                    Test Adir
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/blog-tools/full-article-writing' className='dropdown-item'>
+                                    Full article writing
+                                    </a>
+                                 </li>
+
+                              </ul>
                            </li>
-                           <li>
-                              <a href='#' className='dropdown-item'>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/eCommerce/product-description'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
                                  E-commerce
                               </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/eCommerce/product-description' className='dropdown-item'>
+                                    Product description
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/eCommerce/short-text-hook' className='dropdown-item'>
+                                    Short text hook
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/social-media-tools/youTube-video-ideas'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Social media tools
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
+                                    YouTube video ideas
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/social-media-tools/instagram-captions' className='dropdown-item'>
+                                    Instagram captions
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/social-media-tools/hashtag-generator' className='dropdown-item'>
+                                    Hashtag generator
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/digital-ad-copy/ad-copy-variants'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Digital Ad copy
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
+                                    Ad copy variants
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/digital-ad-copy/general-ad-copy' className='dropdown-item'>
+                                    General Ad copy
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/brainstorming-tools/name-generator'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Brainstorming tools
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
+                                    Name generator
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/brainstorming-tools/startup-ideas' className='dropdown-item'>
+                                    Startup ideas
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/personal-tools/love-letter'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Personal tools
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/personal-tools/love-letter' className='dropdown-item'>
+                                    Love letter
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/personal-tools/cover-letter' className='dropdown-item'>
+                                    Cover letter
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/images/oil-painting'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Images
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/images/oil-painting' className='dropdown-item'>
+                                    Oil painting
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/images/watercolor' className='dropdown-item'>
+                                    Watercolor
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/images/sketch' className='dropdown-item'>
+                                    Sketch
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/images/pop-art' className='dropdown-item'>
+                                    Pop art
+                                    </a>
+                                 </li>
+               
+                              </ul>
                            </li>
                         </ul>
                      </li>
+                     <li className='nav-item dropdown'>
+                              <a
+                                 href='/tools/images/oil-painting'
+                                 className='nav-link dropdown-toggle'
+                                 data-bs-toggle='dropdown'
+                                 data-bs-auto-close='outside'
+                                 aria-expanded='false'>
+                                 Use Cases
+                              </a>
+                              <ul className='dropdown-menu'>
+                                 <li>
+                                    <a href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
+                                    Blog tools
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/eCommerce/product-description' className='dropdown-item'>
+                                    E-commerce
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
+                                    Social media tools
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
+                                    Digital AD copy
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
+                                    Brainstorming tools
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/personal-tools/love-letter' className='dropdown-item'>
+                                    Personal tools
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href='/tools/images/oil-painting' className='dropdown-item'>
+                                    Images
+                                    </a>
+                                 </li>
+
+                                 
+               
+                              </ul>
+                           </li>
                   </ul>
                   <button
                      type='button'
@@ -238,7 +437,7 @@ const LoginPage = () => {
          </header>
 
          <section id='slider' >
-            <Carousel cols={1} rows={1} gap={30} loop autoplay={2000}>
+            <Carousel cols={1} rows={1} gap={0} loop autoplay={2000} >
                <Carousel.Item>
                   <img width={'100%'} height={'900px'} src={`${PUBLIC_URL}` + 'images/slider1.jpg'} />
                   <div className='text-center ' style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, backgroundColor: 'rgba(0,0,0,0.5)' }}>
@@ -465,88 +664,88 @@ const LoginPage = () => {
                </div>
 
             </div>
+            <div className='container'>
+               <div className='position-relative zindex-3 py-5' style={{ width: "650px"}}>
+                  <Carousel
+                     cols={1}
+                     rows={1}
+                     gap={30}
+                     loop
+                     autoplay={2000}
 
-            <div className='position-relative zindex-3 py-5' style={{ width: "750px", height: '600px', paddingLeft: '200px' }}>
-               <Carousel
-                  cols={1}
-                  rows={1}
-                  gap={30}
-                  loop
-                  autoplay={2000}
+                     arrowLeft={<button type="button" id="case-study-prev" className="btn btn-prev btn-icon btn-sm bg-white ms-5 mb-2" tabIndex="0" aria-label="Next slide">
+                        <i className="bx bx-chevron-left"></i>
+                     </button>}
+                     arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', top: '0px' }}>
+                        <i className="bx bx-chevron-right"></i>
+                     </button>}
+                  >
+                     <Carousel.Item>
+                        <div className='text-start bg-white'  >
+                           <Grid cols={1}>
+                              <Card>
+                                 <CardContent style={{ padding: "40px" }}>
+                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
+                                    <p className='h2'>Which Food is Best for Your Pet: Dry or Wet?</p>
 
-                  arrowLeft={<button type="button" id="case-study-prev" className="btn btn-prev btn-icon btn-sm bg-white ms-5 mb-2" tabIndex="0" aria-label="Next slide">
-                     <i className="bx bx-chevron-left"></i>
-                  </button>}
-                  arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', top: '0px' }}>
-                     <i className="bx bx-chevron-right"></i>
-                  </button>}
-               >
-                  <Carousel.Item>
-                     <div className='text-start' >
-                        <Grid cols={1}>
-                           <Card>
-                              <CardContent style={{ padding: "40px" }}>
-                                 <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                 <p className='h2'>Which Food is Best for Your Pet: Dry or Wet?</p>
+                                    <Divider></Divider>
+                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                       When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible.
+                                       But with so many options out there, it can be hard to decide which type of food is best for your pet.
+                                       Should you go with dry food or wet food?
+                                    </p>
+                                    <button className='btn btn-primary'>View Case Study</button>
+                                 </CardContent>
 
-                                 <Divider></Divider>
-                                 <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                    When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible.
-                                    But with so many options out there, it can be hard to decide which type of food is best for your pet.
-                                    Should you go with dry food or wet food?
-                                 </p>
-                                 <button className='btn btn-primary'>View Case Study</button>
-                              </CardContent>
+                              </Card>
+                           </Grid>
+                        </div>
+                     </Carousel.Item>
+                     <Carousel.Item>
+                        <div className='text-start  bg-white'  >
+                           <Grid cols={1}>
+                              <Card>
+                                 <CardContent style={{ padding: "40px" }}>
+                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
+                                    <p className='h2'>What's the Difference Between Dry and Wet Food?</p>
 
-                           </Card>
-                        </Grid>
-                     </div>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                     <div className='text-start ' >
-                        <Grid cols={1}>
-                           <Card>
-                              <CardContent style={{ padding: "40px" }}>
-                                 <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                 <p className='h2'>What's the Difference Between Dry and Wet Food?</p>
+                                    <Divider></Divider>
+                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                       Dry food is typically made up of kibble, which is a combination of grains, proteins, and other ingredients.
+                                       It's usually cheaper than wet food and can be stored for longer periods of time. wet food, on the other hand, is
+                                      
+                                    </p>
+                                    <button className='btn btn-primary'>View Case Study</button>
+                                 </CardContent>
 
-                                 <Divider></Divider>
-                                 <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                    Dry food is typically made up of kibble, which is a combination of grains, proteins, and other ingredients.
-                                    It's usually cheaper than wet food and can be stored for longer periods of time. wet food, on the other hand, is
-                                    usually made up of canned or pouch food that contains more moisture than dry food. It's usually more expensive than dry
-                                    food and needs to be refrigerated after opening.
-                                 </p>
-                                 <button className='btn btn-primary'>View Case Study</button>
-                              </CardContent>
+                              </Card>
+                           </Grid>
+                        </div>
+                     </Carousel.Item>
+                     <Carousel.Item>
+                        <div className='text-start  bg-white' >
+                           <Grid cols={1}>
+                              <Card>
+                                 <CardContent style={{ padding: "40px" }}>
+                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
+                                    <p className='h2'>How to choose the Hight Food for Your Pet</p>
 
-                           </Card>
-                        </Grid>
-                     </div>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                     <div className='text-start ' >
-                        <Grid cols={1}>
-                           <Card>
-                              <CardContent style={{ padding: "40px" }}>
-                                 <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                 <p className='h2'>How to choose the Hight Food for Your Pet</p>
+                                    <Divider></Divider>
+                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                       When it comes to choosing the right food for your pet, there are a few things to consider.
+                                       First, you should think about your pet's age, size, and activity level.
+                                       Puppies and kittens, for example, need more calories and nutrients than adult pets.
+                                       You should also consider your pet's health and any special dietary needs they may have.
+                                    </p>
+                                    <button className='btn btn-primary'>View Case Study</button>
+                                 </CardContent>
 
-                                 <Divider></Divider>
-                                 <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                    When it comes to choosing the right food for your pet, there are a few things to consider.
-                                    First, you should think about your pet's age, size, and activity level.
-                                    Puppies and kittens, for example, need more calories and nutrients than adult pets.
-                                    You should also consider your pet's health and any special dietary needs they may have.
-                                 </p>
-                                 <button className='btn btn-primary'>View Case Study</button>
-                              </CardContent>
-
-                           </Card>
-                        </Grid>
-                     </div>
-                  </Carousel.Item>
-               </Carousel>
+                              </Card>
+                           </Grid>
+                        </div>
+                     </Carousel.Item>
+                  </Carousel>
+               </div>
             </div>
          </div>
          <section
@@ -605,7 +804,7 @@ const LoginPage = () => {
                      </div>
                   </div>
                </div>
-               <div className='col-8'>
+               <div className='col-8 bg-white' >
 
                   <Carousel
                      cols={1}
@@ -621,6 +820,7 @@ const LoginPage = () => {
                      arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', right: '100px', top: '50px' }}>
                         <i className="bx bx-chevron-right"></i>
                      </button>}
+                     
                   >
                      <Carousel.Item>
                         <div className='text-start' >

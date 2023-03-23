@@ -6,7 +6,7 @@ import Layout from 'src/@core/layouts/Layout'
 
 // ** Navigation Imports
 import VerticalNavItems from 'src/navigation/vertical'
-import HorizontalNavItems from 'src/navigation/horizontal'
+import HorizontalNavItems from 'src/navigation/horizontal/index1'
 
 // ** Component Import
 // Uncomment the below line (according to the layout type) when using server-side menu

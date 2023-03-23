@@ -125,16 +125,16 @@ const Register = () => {
     setIsSubmitting (true)
     register({ email, username, password }, err => {
       setIsSubmitting (false)
-      if (err.email) {
+      if (err.response.data.email) {
         setError('email', {
           type: 'manual',
-          message: err.email
+          message: err.response.data.email
         })
       }
-      if (err.username) {
+      if (err.response.data.username) {
         setError('username', {
           type: 'manual',
-          message: err.username
+          message: err.response.data.username
         })
       }
     }, ()=> setIsSubmitting(false))

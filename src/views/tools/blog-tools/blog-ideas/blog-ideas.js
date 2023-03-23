@@ -21,6 +21,7 @@ import MenuItem from '@mui/material/MenuItem'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import { Divider } from '@mui/material'
 
 const BlogIdeasForm = () => {
    // ** States
@@ -59,6 +60,7 @@ const BlogIdeasForm = () => {
    return (
       <Card>
          <CardHeader title='Blog ideas' />
+         <Divider className='mb-3'></Divider>
          <CardContent>
             <form onSubmit={e => e.preventDefault()}>
                <Grid container spacing={5}>

@@ -39,8 +39,8 @@ const navigation = () => {
           path: '/tools/blog-tools/test-adir'
         },
         {
-          title: 'Content Rewriter',
-          path: '/tools/blog-tools/content-rewriter'
+          title: 'Full article writing',
+          path: '/tools/blog-tools/full-article-writing'
         }
       ]
     },
@@ -54,10 +54,6 @@ const navigation = () => {
         {
           title: 'Short text hook',
           path: '/tools/eCommerce/short-text-hook'
-        },
-        {
-          title: 'etsy product title',
-          path: '/tools/eCommerce/etsy-product-title'
         }
       ]
     },
@@ -138,19 +134,6 @@ const navigation = () => {
         {
           title: 'Pop art',
           path: '/tools/images/pop-art'
-        }
-      ]
-    },
-    {
-      title: 'Video Script Generator',
-      path: '/tools/video-script-generator'
-    },
-    {
-      title: 'Writing Tools',
-      children: [
-        {
-          title: 'SEO content',
-          path: '/tools/writing-tools/seo-content'
         }
       ]
     },

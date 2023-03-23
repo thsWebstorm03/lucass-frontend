@@ -18,6 +18,7 @@ import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
+import { Divider } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -59,6 +60,7 @@ const BlogIdeasForm = () => {
    return (
       <Card>
          <CardHeader title='Test Adir' />
+         <Divider className='mb-3'></Divider>
          <CardContent>
             <form onSubmit={e => e.preventDefault()}>
                <Grid container spacing={5}>
