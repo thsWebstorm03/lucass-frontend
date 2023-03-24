@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import { css } from '@emotion/react'
 import React, { useEffect, useState } from 'react'
 
@@ -43,18 +41,15 @@ import { useSettings } from 'src/@core/hooks/useSettings'
 import { PUBLIC_URL } from 'src/configs'
 import { LoadingButton } from '@mui/lab';
 
-// ** Configs
 import themeConfig from 'src/configs/themeConfig'
 
-// ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 import { Grid } from '@mui/material'
 
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import {particle_options} from 'src/configs'
-// ** Styled Components
+import {particle_options} from 'src/configs';
 
 const LinkStyled = styled(Link)(({ theme }) => ({ fontSize: '0.875rem', textDecoration: 'none', color: theme.palette.primary.main }))
 
@@ -100,9 +95,6 @@ const LoginPage = () => {
 
    const particlesInit = useCallback(async engine => {
       console.log(engine);
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
       await loadFull(engine);
    }, []);
 
@@ -110,7 +102,6 @@ const LoginPage = () => {
          await console.log(container);
    }, []);
 
-   // ** Hooks
    const auth = useAuth()
    const theme = useTheme()
    const bgColors = useBgColor()
@@ -173,9 +164,9 @@ const LoginPage = () => {
       <React.Fragment>
          <header className={`header navbar navbar-expand-lg navbar-sticky ${fixed}`} style={{ zIndex: 5, boxShadow: "#99999982 -1px 3px 9px 2px" }}>
             <div className='container'>
-               <a href='#' className='navbar-brand'>
+               <Link href='#' className='navbar-brand'>
                   <img src='/images/logos/seeds-logo.png' width='150' alt='Silicon' />
-               </a>
+               </Link>
                <button
                   className='navbar-toggler'
                   type='button'
@@ -188,202 +179,202 @@ const LoginPage = () => {
                   <hr className='d-lg-none mt-3 mb-2' />
                   <ul className='navbar-nav me-auto'>
                      <li className='nav-item'>
-                        <a href='/login' className='nav-link active'>
+                        <Link href='/login' className='nav-link active'>
                            Home
-                        </a>
+                        </Link>
                      </li>
                      <li className='nav-item dropdown'>
-                        <a
+                        <Link
                            href='/dashboards/library'
                            className='nav-link dropdown-toggle'
                            data-bs-toggle='dropdown'
                            data-bs-auto-close='outside'
                            aria-expanded='false'>
                            TooLs
-                        </a>
+                        </Link>
                         <ul className='dropdown-menu dropdown'>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/blog-tools/blog-ideas'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Blog tools
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
                                        Blog ideas
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/blog-tools/blog-intro' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/blog-intro' className='dropdown-item'>
                                        Blog intro
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/blog-tools/keyword-generator' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/keyword-generator' className='dropdown-item'>
                                     Keyword generator
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/blog-tools/test-adir' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/test-adir' className='dropdown-item'>
                                     Test Adir
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/blog-tools/full-article-writing' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/full-article-writing' className='dropdown-item'>
                                     Full article writing
-                                    </a>
+                                    </Link>
                                  </li>
 
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/eCommerce/product-description'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  E-commerce
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/eCommerce/product-description' className='dropdown-item'>
+                                    <Link href='/tools/eCommerce/product-description' className='dropdown-item'>
                                     Product description
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/eCommerce/short-text-hook' className='dropdown-item'>
+                                    <Link href='/tools/eCommerce/short-text-hook' className='dropdown-item'>
                                     Short text hook
-                                    </a>
+                                    </Link>
                                  </li>
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/social-media-tools/youTube-video-ideas'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Social media tools
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
+                                    <Link href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
                                     YouTube video ideas
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/social-media-tools/instagram-captions' className='dropdown-item'>
+                                    <Link href='/tools/social-media-tools/instagram-captions' className='dropdown-item'>
                                     Instagram captions
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/social-media-tools/hashtag-generator' className='dropdown-item'>
+                                    <Link href='/tools/social-media-tools/hashtag-generator' className='dropdown-item'>
                                     Hashtag generator
-                                    </a>
+                                    </Link>
                                  </li>
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/digital-ad-copy/ad-copy-variants'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Digital Ad copy
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
+                                    <Link href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
                                     Ad copy variants
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/digital-ad-copy/general-ad-copy' className='dropdown-item'>
+                                    <Link href='/tools/digital-ad-copy/general-ad-copy' className='dropdown-item'>
                                     General Ad copy
-                                    </a>
+                                    </Link>
                                  </li>
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/brainstorming-tools/name-generator'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Brainstorming tools
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
+                                    <Link href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
                                     Name generator
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/brainstorming-tools/startup-ideas' className='dropdown-item'>
+                                    <Link href='/tools/brainstorming-tools/startup-ideas' className='dropdown-item'>
                                     Startup ideas
-                                    </a>
+                                    </Link>
                                  </li>
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/personal-tools/love-letter'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Personal tools
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/personal-tools/love-letter' className='dropdown-item'>
+                                    <Link href='/tools/personal-tools/love-letter' className='dropdown-item'>
                                     Love letter
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/personal-tools/cover-letter' className='dropdown-item'>
+                                    <Link href='/tools/personal-tools/cover-letter' className='dropdown-item'>
                                     Cover letter
-                                    </a>
+                                    </Link>
                                  </li>
                               </ul>
                            </li>
                            <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/images/oil-painting'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Images
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/images/oil-painting' className='dropdown-item'>
+                                    <Link href='/tools/images/oil-painting' className='dropdown-item'>
                                     Oil painting
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/images/watercolor' className='dropdown-item'>
+                                    <Link href='/tools/images/watercolor' className='dropdown-item'>
                                     Watercolor
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/images/sketch' className='dropdown-item'>
+                                    <Link href='/tools/images/sketch' className='dropdown-item'>
                                     Sketch
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/images/pop-art' className='dropdown-item'>
+                                    <Link href='/tools/images/pop-art' className='dropdown-item'>
                                     Pop art
-                                    </a>
+                                    </Link>
                                  </li>
                
                               </ul>
@@ -391,49 +382,49 @@ const LoginPage = () => {
                         </ul>
                      </li>
                      <li className='nav-item dropdown'>
-                              <a
+                              <Link
                                  href='/tools/images/oil-painting'
                                  className='nav-link dropdown-toggle'
                                  data-bs-toggle='dropdown'
                                  data-bs-auto-close='outside'
                                  aria-expanded='false'>
                                  Use Cases
-                              </a>
+                              </Link>
                               <ul className='dropdown-menu'>
                                  <li>
-                                    <a href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
+                                    <Link href='/tools/blog-tools/blog-ideas' className='dropdown-item'>
                                     Blog tools
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/eCommerce/product-description' className='dropdown-item'>
+                                    <Link href='/tools/eCommerce/product-description' className='dropdown-item'>
                                     E-commerce
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
+                                    <Link href='/tools/social-media-tools/youTube-video-ideas' className='dropdown-item'>
                                     Social media tools
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
+                                    <Link href='/tools/digital-ad-copy/ad-copy-variants' className='dropdown-item'>
                                     Digital AD copy
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
+                                    <Link href='/tools/brainstorming-tools/name-generator' className='dropdown-item'>
                                     Brainstorming tools
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/personal-tools/love-letter' className='dropdown-item'>
+                                    <Link href='/tools/personal-tools/love-letter' className='dropdown-item'>
                                     Personal tools
-                                    </a>
+                                    </Link>
                                  </li>
                                  <li>
-                                    <a href='/tools/images/oil-painting' className='dropdown-item'>
+                                    <Link href='/tools/images/oil-painting' className='dropdown-item'>
                                     Images
-                                    </a>
+                                    </Link>
                                  </li>
 
                                  
@@ -751,7 +742,7 @@ const LoginPage = () => {
                                                    borderRadius: '50%',
                                                    overflow: 'hidden'
                                                 }}>
-                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1'/>
                                              </div>
                                           </div>
                                           <div className='col-11'>
@@ -827,7 +818,7 @@ const LoginPage = () => {
                                                    borderRadius: '50%',
                                                    overflow: 'hidden'
                                                 }}>
-                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1' />
                                              </div>
                                           </div>
                                           <div className='col-11'>
@@ -877,10 +868,10 @@ const LoginPage = () => {
             </div>
          </section>
 
-         <a href='#top' className={`btn-scroll-top ${backtop}`} data-scroll>
+         <Link href='#top' className={`btn-scroll-top ${backtop}`} data-scroll>
             <span className='btn-scroll-top-tooltip text-muted fs-sm me-2'>Top</span>
             <i className='btn-scroll-top-icon bx bx-chevron-up'></i>
-         </a>
+         </Link>
 
          <div className='modal fade' id='modalId' tabIndex={-1} role='dialog'>
             <div className='modal-dialog modal-dialog-centered' role='document'>
@@ -888,7 +879,7 @@ const LoginPage = () => {
                   <div className='modal-header'>
                      <ul className='nav nav-tabs mb-0' role='tablist'>
                         <li className='nav-item fs-sm mb-0'>
-                           <a
+                           <Link
                               className='nav-link active'
                               href='#signin'
                               data-bs-toggle='tab'
@@ -896,10 +887,10 @@ const LoginPage = () => {
                               aria-selected='true'>
                               <i className='bx bx-lock-open fs-base me-2'></i>
                               Sign in
-                           </a>
+                           </Link>
                         </li>
                         <li className='nav-item fs-sm mb-0'>
-                           <a
+                           <Link
                               className='nav-link'
                               href='#signup'
                               data-bs-toggle='tab'
@@ -907,7 +898,7 @@ const LoginPage = () => {
                               aria-selected='false'>
                               <i className='bx bx-user fs-base me-2'></i>
                               Sign up
-                           </a>
+                           </Link>
                         </li>
                      </ul>
                      <button
@@ -1180,25 +1171,26 @@ const LoginPage = () => {
                      <img
                         className='mb-4'
                         src={`${PUBLIC_URL}` + 'images/logos/seeds-logo.png'}
-                        width={'200px'} />
+                        width={'200px'} 
+                        alt='text1'/>
                      <ul className='list-unstyled'>
                         <li>
-                           <a className='link-sm link-secondary1'>
+                           <Link className='link-sm link-secondary1'>
                               <i className='bx bx-phone me-1'></i>
                               153 Williamson Plaza, Maggieberg
-                           </a>
+                           </Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>
+                           <Link className='link-sm link-secondary1'>
                               <i className='bx bx-phone me-1'></i>
                               +1 (062) 109-9222
-                           </a>
+                           </Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>
+                           <Link className='link-sm link-secondary1'>
                               <i className='bx bx-mail-send me-1'></i>
                               support@krashless.com
-                           </a>
+                           </Link>
                         </li>
                      </ul>
                   </div>
@@ -1206,10 +1198,10 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Features</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <a className='link-sm link-secondary1'>Dashboard</a>
+                           <Link className='link-sm link-secondary1'>Dashboard</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Pricing</a>
+                           <Link className='link-sm link-secondary1'>Pricing</Link>
                         </li>
                      </ul>
                   </div>
@@ -1217,31 +1209,31 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>E-Commerce</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <a className='link-sm link-secondary1'>Blog tools</a>
+                           <Link className='link-sm link-secondary1'>Blog tools</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>E-Commerce</a>
+                           <Link className='link-sm link-secondary1'>E-Commerce</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Social media tools</a>
+                           <Link className='link-sm link-secondary1'>Social media tools</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Digital Ad copy</a>
+                           <Link className='link-sm link-secondary1'>Digital Ad copy</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Brainstorming tools</a>
+                           <Link className='link-sm link-secondary1'>Brainstorming tools</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Personal tools</a>
+                           <Link className='link-sm link-secondary1'>Personal tools</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Images</a>
+                           <Link className='link-sm link-secondary1'>Images</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Video Script Generator</a>
+                           <Link className='link-sm link-secondary1'>Video Script Generator</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Writing Tools</a>
+                           <Link className='link-sm link-secondary1'>Writing Tools</Link>
                         </li>
                      </ul>
                   </div>
@@ -1249,16 +1241,16 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Tools</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <a className='link-sm link-secondary1'>Blog ideas</a>
+                           <Link className='link-sm link-secondary1'>Blog ideas</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Blog intro</a>
+                           <Link className='link-sm link-secondary1'>Blog intro</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Keyword generator</a>
+                           <Link className='link-sm link-secondary1'>Keyword generator</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Product description</a>
+                           <Link className='link-sm link-secondary1'>Product description</Link>
                         </li>
                      </ul>
                   </div>
@@ -1266,16 +1258,16 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Resources</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <a className='link-sm link-secondary1'>Your Account</a>
+                           <Link className='link-sm link-secondary1'>Your Account</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Genie Editor</a>
+                           <Link className='link-sm link-secondary1'>Genie Editor</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Get started</a>
+                           <Link className='link-sm link-secondary1'>Get started</Link>
                         </li>
                         <li>
-                           <a className='link-sm link-secondary1'>Sign in</a>
+                           <Link className='link-sm link-secondary1'>Sign in</Link>
                         </li>
                      </ul>
                   </div>
