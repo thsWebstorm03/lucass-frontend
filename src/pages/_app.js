@@ -55,6 +55,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'src/iconify-bundle/icons-bundle-react'
 
 // ** Global css styles
+import '../../public/styles/animate.css'
 import '../../public/styles/globals.css'
 import '../../public/styles/theme.min.css'
 import '../../public/styles/swiper-bundle.min.css'

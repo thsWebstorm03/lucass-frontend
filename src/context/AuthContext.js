@@ -9,8 +9,6 @@ import axios from 'axios'
 
 // ** Config
 import authConfig from 'src/configs/auth'
-import fetch from 'cross-fetch'
-import { BASE_URL } from 'src/configs'
 
 // ** Defaults
 const defaultProvider = {
@@ -34,36 +32,39 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)
+      console.log(storedToken)
       if (storedToken) {
-        setLoading(true)
-        fetch(BASE_URL + authConfig.meEndpoint, {
-          mode: 'no-cors',
-          headers: {
-            'Authorization': storedToken,
-            'Access-Control-Allow-Origin':'*',
-          }
-        })
-          .then((response) => response.json())
-          .then(async response => {
-            setLoading(false)
-            const user = { ...response.data }
-            setUser({
-              id: user._id,
-              username: user.username,
-              email: user.email,
-              role: user.role ? user.role : "admin"
-            })
-          })
-          .catch(() => {
-            localStorage.removeItem('userData')
-            localStorage.removeItem('refreshToken')
-            localStorage.removeItem('accessToken')
-            setUser(null)
-            setLoading(false)
-            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace('/login')
-            }
-          })
+      //   setLoading(true)
+      //   await axios
+      //     .get(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.meEndpoint, {
+      //       headers: {
+      //         Authorization: storedToken
+      //       }
+      //     })
+      //     .then(async response => {
+      //       setLoading(false)
+      //       setUser({ ...response.data })
+            
+      //     })
+      //     .catch(() => {
+      //       localStorage.removeItem('userData')
+      //       localStorage.removeItem('refreshToken')
+      //       localStorage.removeItem('accessToken')
+      //       setUser(null)
+      //       setLoading(false)
+      //       if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
+      //         router.replace('/login')
+      //       }
+      //     })
+      setLoading(false)
+      setUser({
+        id: 1,
+        role: 'admin',
+        password: 'admin',
+        fullName: 'John Doe',
+        username: 'johndoe',
+        email: 'admin@vuexy.com'
+      })
       } else {
         setLoading(false)
       }
@@ -73,32 +74,34 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   const handleLogin = (params, errorCallback, successCallback) => {
-    const customHeaders = {
-      "Content-Type": "application/json",
-      'Access-Control-Allow-Origin':'*',
-    }
-    fetch(BASE_URL + authConfig.loginEndpoint, { method: "POST", headers: customHeaders, mode: 'no-cors', body: JSON.stringify(params) })
-      .then((res) => res.json())
-      .then((data) => {
-        successCallback()
-        params.rememberMe
-          ? window.localStorage.setItem(authConfig.storageTokenKeyName, data.token)
-          : null
-        const returnUrl = router.query.returnUrl
-        const user = { ...data.user }
-        setUser({
-          id: user._id,
-          username: user.username,
-          email: user.email,
-          role: user.role ? user.role : "admin"
-        })
-        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(data.user)) : null
-        const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
+    // axios
+    //   .post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.loginEndpoint, params)
+    //   .then(async response => {
+    //     successCallback ()
+    //     params.rememberMe
+    //       ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.token)
+    //       : null
+    //     const returnUrl = router.query.returnUrl;console.log (returnUrl, "LLKKK")
+    //     setUser({ ...response.data.user })
+    //     params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.user)) : null
+    //     const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
+    //     router.replace(redirectURL)
+    //   })
+    //   .catch(err => {
+    //     if (errorCallback) errorCallback(err)
+    //   })
+    localStorage.setItem('accessToken', 'ppp');
+    setUser({
+      id: 1,
+      role: 'admin',
+      password: 'admin',
+      fullName: 'John Doe',
+      username: 'johndoe',
+      email: 'admin@vuexy.com'
+    })
+    const returnUrl = router.query.returnUrl;
+    const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
         router.replace(redirectURL)
-      })
-      .catch(err => {
-        if (errorCallback) errorCallback(err)
-      })
   }
 
   const handleLogout = () => {
@@ -108,19 +111,16 @@ const AuthProvider = ({ children }) => {
     router.push('/login')
   }
 
-  const handleRegister = (params, errorCallback, successCallback) => {
-    const customHeaders = {
-      "Content-Type": "application/json",
-      'Access-Control-Allow-Origin':'*',
-    }
-    fetch(BASE_URL + authConfig.registerEndpoint, { method: "POST", headers: customHeaders, mode: 'no-cors', body: JSON.stringify(params) })
-      .then((res) => res.json())
-      .then(data => { console.log (data, "HHHHHHHHH")
-        if (successCallback) successCallback()
-        if (data._id == undefined) {
-          if (errorCallback) errorCallback(data)
+  const handleRegister = (params, errorCallback, successCallback) => {console.log (params)
+    axios.post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.registerEndpoint, params)
+      .then(res => {
+        if(successCallback) successCallback () 
+        const user = res.data
+        if (user.error) {
+          if (errorCallback) errorCallback(res.data.error)
         } else {
-          handleLogin({ email: data.email, password: data.password })
+          console.log ("success register")
+          handleLogin({ email: user.email, password: user.password })
         }
       })
       .catch(err => (errorCallback ? errorCallback(err) : null))

@@ -22,6 +22,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 import Icon from 'src/@core/components/icon'
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -49,6 +50,10 @@ import themeConfig from 'src/configs/themeConfig'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 import { Grid } from '@mui/material'
 
+import { useCallback } from "react";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import {particle_options} from 'src/configs'
 // ** Styled Components
 
 const LinkStyled = styled(Link)(({ theme }) => ({ fontSize: '0.875rem', textDecoration: 'none', color: theme.palette.primary.main }))
@@ -92,6 +97,18 @@ const LoginPage = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [show, setShow] = useState('')
+
+   const particlesInit = useCallback(async engine => {
+      console.log(engine);
+      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+      // starting from v2 you can add only the features you need reducing the bundle size
+      await loadFull(engine);
+   }, []);
+
+   const particlesLoaded = useCallback(async container => {
+         await console.log(container);
+   }, []);
 
    // ** Hooks
    const auth = useAuth()
@@ -436,510 +453,427 @@ const LoginPage = () => {
             </div>
          </header>
 
-         <section id='slider' >
-            <Carousel cols={1} rows={1} gap={0} loop autoplay={2000} >
-               <Carousel.Item>
-                  <img width={'100%'} height={'900px'} src={`${PUBLIC_URL}` + 'images/slider1.jpg'} />
-                  <div className='text-center ' style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                     <Grid cols={1}>
-                        <Grid item span={24}>
-                           <p className='h1 dark-mode' style={{ fontSize: '80px', marginTop: '200px' }}>Write Better, Write Faster <br></br>Code With Genie</p>
-                        </Grid>
-                        <Grid item span={24}>
-                           <p className='h1 dark-mode' style={{ fontSize: '25px', padding: '20px 250px', color: 'lightgrey' }}>Unlock the full potential of your projects with our comprehensive  suite of <br></br>tools
-                              designed for seamless collaboration and easy navigation. </p>
-                        </Grid>
-                        <Grid item span={24}>
-                           <button type='button' className='btn btn-primary'>Start your project</button>
-                        </Grid>
-                     </Grid>
-                  </div>
-               </Carousel.Item>
-               <Carousel.Item>
-                  <img width={'100%'} height={'900px'} src={`${PUBLIC_URL}` + 'images/slider2.jpg'} />
-                  <div className='text-center' style={{ marginTop: "-800px" }} >
-                     <p className='h1 dark-mode' style={{ fontSize: '100px', marginTop: '100px' }}>Best Solution2</p>
-                  </div>
-               </Carousel.Item>
-               <Carousel.Item>
-                  <img width={'100%'} height={'900px'} src={`${PUBLIC_URL}` + 'images/slider3.jpg'} />
-                  <div className='text-center' style={{ marginTop: "-800px" }} >
-                     <p className='h1 dark-mode' style={{ fontSize: '100px', marginTop: '100px' }}>Best Solution3</p>
-                  </div>
-               </Carousel.Item>
-            </Carousel>
-         </section>
-         <section id='marks' className='container'>
-            <div className='row d-flex pt-5 mt-5'>
-               <div className='col'>
-                  <img src={`${PUBLIC_URL + 'images/seeds-fitbit-dark.png'}`} />
-               </div>
-               <div className='col'>
-                  <img src={`${PUBLIC_URL + 'images/seeds-forbes-dark.png'}`} />
-               </div>
-               <div className='col'>
-                  <img src={`${PUBLIC_URL + 'images/seeds-mailchimp-dark.png'}`} />
-               </div>
-
-               <div className='col'>
-                  <img src={`${PUBLIC_URL + 'images/seeds-layar-dark.png'}`} />
-               </div>
-               <div className='col'>
-                  <img src={`${PUBLIC_URL + 'images/seeds-hubspot-dark.png'}`} />
-               </div>
-            </div>
-         </section>
-         <section id='landings' className='container pt-5 mt-2 mt-md-4 mt-lg-3'>
-            <h2 className='h1 mt-5 pt-2 pt-lg-0'>What we do?</h2>
-            <p className='fs-lg pb-2 pb-md-3 pb-lg-0 mb-5 mb-lg-5'>
-               AI-powered productivity tool for all your creative needs.
-            </p>
-            <div
-               className='row gx-3'
-               style={{
-                  marginTop: '80px'
-               }}>
-               <div className='col-4'>
-                  <div
-                     className='card-hover shadow-none position-relative mb-4 mb-lg-5 px-4 pb-3'
-                     style={{
-                        backgroundColor: '#FFFFFF'
-                     }}>
-                     <div
-                        className='p-1'
-                        style={{
-                           width: '60px',
-                           height: '60px',
-                           borderRadius: '10px',
-                           textAlign: 'center',
-                           backgroundColor: '#6366f1',
-                           color: '#FFFFFF',
-                           position: 'relative',
-                           transform: 'translateY(-50%) translateX(50%)'
-                        }}>
-                        <i className='bx bxs-rocket fs-1 pt-1'></i>
-                     </div>
-                     <h3 className='h5 mt-1 mb-3 mb-lg-0'>
-                        <a href='landing-mobile-app-showcase-v1.html' className='stretched-link'>
-                           Intelligent Content Generation
-                           <i
-                              className='bx bxs-right-arrow-alt ms-1'
-                              style={{
-                                 border: '1px solid #6366f1',
-                                 lineHeight: '20px',
-                                 borderRadius: '10px'
-                              }}></i>
-                        </a>
-                     </h3>
-                     <p className='fs-lg pb-2 pb-md-3 pb-lg-0 mb-4 mb-lg-5 mt-3'>
-                        Automatically generate high-quality blog posts, articles, and more with AI.
-                     </p>
-                  </div>
-               </div>
-
-               <div className='col-4'>
-                  <div
-                     className='col card-hover shadow-none position-relative mb-4 mb-lg-5 px-4 pb-3'
-                     style={{
-                        backgroundColor: '#FFFFFF'
-                     }}>
-                     <div
-                        className='p-1'
-                        style={{
-                           width: '60px',
-                           height: '60px',
-                           borderRadius: '10px',
-                           textAlign: 'center',
-                           backgroundColor: '#6366f1',
-                           color: '#FFFFFF',
-                           position: 'relative',
-                           transform: 'translateY(-50%) translateX(50%)'
-                        }}>
-                        <i className='bx bxs-rocket fs-1 pt-1'></i>
-                     </div>
-                     <h3 className='h5 mt-1 mb-lg-0 '>
-                        <a href='#' className='strech-link'>
-                           Customizable Output
-                           <i
-                              className='bx bxs-right-arrow-alt ms-1'
-                              style={{
-                                 border: '1px solid #6366f1',
-                                 lineHeight: '20px',
-                                 borderRadius: '10px'
-                              }}></i>
-                        </a>
-                     </h3>
-                     <p className='fs-lg pb-lg-0 mb-4 mb-lg-5 mt-3'>
-                        Fine-tune the tone, style, and format of your content to suit your brand's
-                        needs.
-                     </p>
-                  </div>
-               </div>
-
-               <div className='col-4'>
-                  <div
-                     className='col card-hover shadow-none position-relative mb-4 mb-lg-5 px-4 pb-3'
-                     style={{
-                        backgroundColor: '#FFFFFF'
-                     }}>
-                     <div
-                        className='p-1'
-                        style={{
-                           width: '60px',
-                           height: '60px',
-                           borderRadius: '10px',
-                           textAlign: 'center',
-                           backgroundColor: '#6366f1',
-                           color: '#FFFFFF',
-                           position: 'relative',
-                           transform: 'translateY(-50%) translateX(50%)'
-                        }}>
-                        <i className='bx bxs-rocket fs-1 pt-1'></i>
-                     </div>
-                     <h3 className='h5 mt-1 mb-lg-0'>
-                        <a href='#' className='stretched-link'>
-                           In-Depth
-                           <i
-                              className='bx bxs-right-arrow-alt ms-1'
-                              style={{
-                                 border: '1px solid #6366f1',
-                                 lineHeight: '20px',
-                                 borderRadius: '10px'
-                              }}></i>
-                        </a>
-                     </h3>
-                     <p className='fs-lg pb-lg-0 mb-4 mb-lg-5 mt-3'>
-                        Track performance of your content and see topics resonation with your audience.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div className='row container justify-content-center mt-1'>
-               <img
-                  src={`${PUBLIC_URL + 'images/three-pointers.svg'}`}
-                  style={{
-                     width: '70%'
-                  }} />
-               <p className='pt-2 pb-2 text-center'>
-                  <span
-                     style={{
-                        fontWeight: 800,
-                        color: '#000000'
-                     }}>
-                     It is fast and easy.
-                  </span>
-                  Generate your first and ongoing content with Genie
-               </p>
-            </div>
-         </section>
-         <section style={{
-            backgroundColor: 'rgb(225 225 225)'
-         }}>
+         <section id='slider'>
             <div className='container'>
-               <marquee>
-                  <h1 className='pt-3'>
-                     Explore
-                     <span className='text-primary'>your possibilities</span>
-                     with Genie's dashboard
-                  </h1>
-               </marquee>
-               <div className='row d-flex justify-content-between'>
-                  <p>
-                     Unlock the full potential of your projects with our comprehensive suite of tools
-                     designed for seamless collaboration and easy navigation.
-                  </p>
-               </div>
-            </div>
-         </section>
-         <div className='position-relative py-lg-4 py-xl-5'>
-            <div className='position-absolute top-0 start-0 w-100 h-100'>
-               <div
-                  id='image-1'
-                  className='position-absolute top-0 start-0 w-100 h-100 bg-position-center bg-repeat-0 bg-size-cover '
-                  style={{
-                     backgroundImage: `url(${PUBLIC_URL}` + 'images/landing/software-agency-1/case-study03.jpg)',
-                  }}>
-                  <span
-                     className='position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-35'></span>
-               </div>
-
-            </div>
-            <div className='container'>
-               <div className='position-relative zindex-3 py-5' style={{ width: "650px"}}>
-                  <Carousel
-                     cols={1}
-                     rows={1}
-                     gap={30}
-                     loop
-                     autoplay={2000}
-
-                     arrowLeft={<button type="button" id="case-study-prev" className="btn btn-prev btn-icon btn-sm bg-white ms-5 mb-2" tabIndex="0" aria-label="Next slide">
-                        <i className="bx bx-chevron-left"></i>
-                     </button>}
-                     arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', top: '0px' }}>
-                        <i className="bx bx-chevron-right"></i>
-                     </button>}
-                  >
-                     <Carousel.Item>
-                        <div className='text-start bg-white'  >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "40px" }}>
-                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                    <p className='h2'>Which Food is Best for Your Pet: Dry or Wet?</p>
-
-                                    <Divider></Divider>
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible.
-                                       But with so many options out there, it can be hard to decide which type of food is best for your pet.
-                                       Should you go with dry food or wet food?
-                                    </p>
-                                    <button className='btn btn-primary'>View Case Study</button>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
+               <Grid container spacing={2}>
+                  <Grid item xs={5}>
+                     <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Task Management Assistant You Gonna Love</p>
+                     <p style={{fontSize:"18px"}}>We offer you a new generation of task management system. Plan, manage & track all your tasks in one flexible tool.</p>
+                     <Button type='submit' variant='contained' size='large' className='mt-4'>
+                        Get started for free
+                     </Button>
+                     <p style={{fontWeight : "bold", marginTop:"100px"}}>Largest companies use our tool to work efficiently</p>
+                     <div className='d-flex justify-content-between'>
+                        <img src='/images/02.svg' width={135} alt='logo'/>
+                        <img src='/images/04.svg' width={135} alt='logo'/>
+                        <img src='/images/05.svg' width={135} alt='logo'/>
+                        <img src='/images/07.svg' width={135} alt='logo'/>
+                     </div>
+                  </Grid>
+                  <Grid item xs={7}>
+                     <div style={{position : 'relative'}}>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer01.png' alt='layer' />
                         </div>
-                     </Carousel.Item>
-                     <Carousel.Item>
-                        <div className='text-start  bg-white'  >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "40px" }}>
-                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                    <p className='h2'>What's the Difference Between Dry and Wet Food?</p>
-
-                                    <Divider></Divider>
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       Dry food is typically made up of kibble, which is a combination of grains, proteins, and other ingredients.
-                                       It's usually cheaper than wet food and can be stored for longer periods of time. wet food, on the other hand, is
-                                      
-                                    </p>
-                                    <button className='btn btn-primary'>View Case Study</button>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer02.png' alt='layer' />
                         </div>
-                     </Carousel.Item>
-                     <Carousel.Item>
-                        <div className='text-start  bg-white' >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "40px" }}>
-                                    <img src="/images/landing/software-agency-1/case-study-logo01.png" className="d-block mb-3" width="72" alt="Logo" />
-                                    <p className='h2'>How to choose the Hight Food for Your Pet</p>
-
-                                    <Divider></Divider>
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       When it comes to choosing the right food for your pet, there are a few things to consider.
-                                       First, you should think about your pet's age, size, and activity level.
-                                       Puppies and kittens, for example, need more calories and nutrients than adult pets.
-                                       You should also consider your pet's health and any special dietary needs they may have.
-                                    </p>
-                                    <button className='btn btn-primary'>View Case Study</button>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer03.png' alt='layer' />
                         </div>
-                     </Carousel.Item>
-                  </Carousel>
-               </div>
-            </div>
-         </div>
-         <section
-            id='desktop1'
-            className='container text-center pt-2 mt-2 mt-md-4 mt-lg-5'>
-            <div
-               className='row justify-content-center '
-               style={{
-                  position: 'relative'
-               }}>
-               <div className='col-4'>
-                  <div
-                     className='dark-mode card h-100 zi-1'
-                     style={{
-                        backgroundColor: 'rgb(19 2 52)'
-                     }}>
-                     <div className='card-header text-start'>
-                        <h1 className='card-title mt-5 text-primary'>200+</h1>
-                        <span className='h4 card-text text-light'>Clients Already Served</span>
-
-                        <div
-                           className='d-flex flex-wrap justify-content-start mt-5 p-2 mb-5'
-                           style={{
-                              backgroundColor: 'rgb(50,50,100)',
-                              width: '70%',
-                              borderRadius: '10px'
-                           }}>
-                           <div className='col-6 text-start d-flex align-items-center'>
-                              <span
-                                 style={{
-                                    fontSize: '12px'
-                                 }}>
-                                 REVIEWED ON
-                              </span>
-                           </div>
-                           <div className='col-6 d-flex align-items-center'>
-                              <span
-                                 style={{
-                                    fontSize: '12px'
-                                 }}>
-                                 REVIEWED ON
-                              </span>
-                           </div>
-                           <div className='col-6 d-flex align-items-center'>
-                              <span className='h4 mb-0'>Clutch</span>
-                           </div>
-                           <div className='col-6 d-flex align-items-center'>
-                              <span
-                                 style={{
-                                    fontSize: '12px'
-                                 }}>
-                                 REVIEWED ON
-                              </span>
-                           </div>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer04.png' alt='layer' />
+                        </div>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer05.png' alt='layer' />
+                        </div>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer06.png' alt='layer' />
+                        </div>
+                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/landing/saas-1/hero/layer07.png' alt='layer' />
                         </div>
                      </div>
-                  </div>
-               </div>
-               <div className='col-8 bg-white' >
-
-                  <Carousel
-                     cols={1}
-                     rows={1}
-                     gap={30}
-                     loop
-                     autoplay={2000}
-                     showDots
-                     dot={MyDot}
-                     arrowLeft={<button type="button" id="case-study-prev" className="btn btn-prev btn-icon btn-sm bg-white ms-5 mb-2" tabIndex="0" aria-label="Prev slide" style={{ position: 'absolute', right: '150px', top: '50px', zIndex: 3 }}>
-                        <i className="bx bx-chevron-left"></i>
-                     </button>}
-                     arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', right: '100px', top: '50px' }}>
-                        <i className="bx bx-chevron-right"></i>
-                     </button>}
                      
-                  >
-                     <Carousel.Item>
-                        <div className='text-start' >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "45px" }}>
-                                    <button className='btn btn-primary p-2'>
-                                       <i className='bx bxs-quote-alt-left fs-5'></i>
-                                    </button>
-
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       Which Food is Best for Your Pet: Dry or Wet?
-                                       When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
-                                       In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
-                                    </p>
-                                    <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                       <div className='col-1 text-start d-flex align-items-center'>
-                                          <div
-                                             style={{
-                                                width: '50px',
-                                                height: '50px',
-                                                borderRadius: '50%',
-                                                overflow: 'hidden'
-                                             }}>
-                                             <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
-                                          </div>
-                                       </div>
-                                       <div className='col-11'>
-                                          <span className='h5'>Christina</span>
-                                          <br />
-                                          <span>Head of Marketing at Lorem Company</span>
-                                       </div>
-                                    </div>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
-                        </div>
-                     </Carousel.Item>
-                     <Carousel.Item>
-                        <div className='text-start ' >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "45px" }}>
-                                    <button className='btn btn-primary p-2'>
-                                       <i className='bx bxs-quote-alt-left fs-5'></i>
-                                    </button>
-
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       Which Food is Best for Your Pet: Dry or Wet?
-                                       When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
-                                       In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
-                                    </p>
-                                    <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                       <div className='col-1 text-start d-flex align-items-center'>
-                                          <div
-                                             style={{
-                                                width: '50px',
-                                                height: '50px',
-                                                borderRadius: '50%',
-                                                overflow: 'hidden'
-                                             }}>
-                                             <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
-                                          </div>
-                                       </div>
-                                       <div className='col-11'>
-                                          <span className='h5'>Christina</span>
-                                          <br />
-                                          <span>Head of Marketing at Lorem Company</span>
-                                       </div>
-                                    </div>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
-                        </div>
-                     </Carousel.Item>
-                     <Carousel.Item>
-                        <div className='text-start ' >
-                           <Grid cols={1}>
-                              <Card>
-                                 <CardContent style={{ padding: "45px" }}>
-                                    <button className='btn btn-primary p-2'>
-                                       <i className='bx bxs-quote-alt-left fs-5'></i>
-                                    </button>
-
-                                    <p className='pb-2 pb-lg-3 mb-3 mt-3'>
-                                       Which Food is Best for Your Pet: Dry or Wet?
-                                       When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
-                                       In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
-                                    </p>
-                                    <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                       <div className='col-1 text-start d-flex align-items-center'>
-                                          <div
-                                             style={{
-                                                width: '50px',
-                                                height: '50px',
-                                                borderRadius: '50%',
-                                                overflow: 'hidden'
-                                             }}>
-                                             <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
-                                          </div>
-                                       </div>
-                                       <div className='col-11'>
-                                          <span className='h5'>Christina</span>
-                                          <br />
-                                          <span>Head of Marketing at Lorem Company</span>
-                                       </div>
-                                    </div>
-                                 </CardContent>
-
-                              </Card>
-                           </Grid>
-                        </div>
-                     </Carousel.Item>
-                  </Carousel>
-
-
+                  </Grid>
+               </Grid>
+               <div style={{width : "100%", height:"calc(100vh - 80px)", overflow : "hidden", position:"absolute",left:"0", top:"80px", zIndex:"3", backgroundColor:"rgba(100,100,150,0)"}}>
+                  <Particles
+                     id="tsparticles"
+                     init={particlesInit}
+                     loaded={particlesLoaded}
+                     options={particle_options}
+                  />
                </div>
+            </div>
+         </section>
+         
+         <section id='organize'>
+            <div className='container' style={{marginTop:"250px"}}>
+               <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                     <h1 className='text-center'>Stay Organized & Connected</h1>
+                  </Grid>
+               </Grid>
+               <Grid container spacing={2} className='mt-5'>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+               </Grid>
+               <Grid container spacing={2} className='mt-3'>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
+                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                     </div>
+                     <h4 className='mt-3'>Task Comments</h4>
+                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                  </Grid>
+               </Grid>
+            </div>
+         </section>
+
+         <section id='manage'>
+            <div className='container' style={{marginTop:"100px"}}>
+               <Grid container spacing={5} >
+                  <Grid item xs={7}>
+                     <img src='/images/landing/saas-1/dashboard.png' width='100%' alt='manage' />
+                  </Grid>
+                  <Grid item xs={5} display='flex' justifyContent='end' alignItems='center'>
+                     <div>
+                        <p className='h3'>Manage Your Work</p>
+                        <ul className="list-unstyled pb-2">
+                           <li className="d-flex align-items-center pb-1 mb-2">
+                              <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
+                              Powerful project management
+                           </li>
+                           <li className="d-flex align-items-center pb-1 mb-2">
+                              <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
+                              Transparent work management
+                           </li>
+                           <li className="d-flex align-items-center pb-1 mb-2">
+                              <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
+                              Manage work &amp; focus on the most important tasks
+                           </li>
+                           <li className="d-flex align-items-center pb-1 mb-2">
+                              <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
+                              Track your progress with interactive charts
+                           </li>
+                           <li className="d-flex align-items-center pb-1 mb-2">
+                              <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
+                              Easiest way to track time spent on tasks
+                           </li>
+                        </ul>
+                        <Button type='submit' variant='contained' size='large' className='mt-2'>
+                           Learn more
+                           <i className='bx bx-right-arrow ps-2'></i>
+                        </Button>
+                     </div>
+                     
+                  </Grid>
+               </Grid>
+            </div>
+            
+         </section>
+
+         <section id='oneTool'>
+            <div className='container'>
+               <Grid container spacing={0}>
+                  <Grid item xs={12}>
+                     <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"120px"}}>One Tool — Endless Use Cases</p>
+                  </Grid>
+                  <Grid item xs={12} display='flex' justifyContent='center'>
+                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                        <i className='bx bxs-star'></i>
+                        Project Management
+                     </Button>
+                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                        <i className='bx bxs-star'></i>
+                        Remote work
+                     </Button>
+                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                        <i className='bx bxs-star'></i>
+                        Product Release
+                     </Button>
+                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                        <i className='bx bxs-star'></i>
+                        Campaign Planning
+                     </Button>
+                  </Grid>
+               </Grid>
+               <Grid container style={{backgroundColor:"#f3f6ff",marginTop:"60px", padding:"45px 80px 20px 80px"}}>
+                  <Grid container item xs={5} display='flex' direction='column' justifyContent='center' alignItems='start'>
+                     <p className='h3 mb-2'>Project management</p>
+                     <p>Vestibulum nunc lectus auctor quis. Natoque lectus tortor lacus, eu. Nunc feugiat nisl maecenas nulla hac morbi. Vitae, donec facilisis sed nunc netus. Venenatis posuere faucibus enim est. Vel dignissim morbi blandit morbi tellus. Arcu ullamcorper quis enim.</p>
+                  </Grid>
+                  <Grid item xs={5}>
+                     <img src="/images/landing/saas-1/use-cases/01.png" className="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image" />
+                  </Grid>
+               </Grid>
+               
+            </div>
+         </section>
+         
+         <section id='desktop1'>
+            <div className='container mt-5'>
+               <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                     <div
+                        className='dark-mode card h-100 zi-1'
+                        style={{
+                           backgroundColor: 'rgb(0,0,0)',
+                           color : "#FFFFFF"
+                        }}>
+                        <div className='card-header text-start'>
+                           <h1 className='card-title mt-5'>200+</h1>
+                           <span className='h4 card-text text-light'>Clients Already Served</span>
+
+                           <div
+                              className='d-flex flex-wrap justify-content-start mt-5 p-2 mb-5'
+                              style={{
+                                 backgroundColor: 'rgb(50,50,100)',
+                                 width: '70%',
+                                 borderRadius: '10px'
+                              }}>
+                              <div className='col-6 text-start d-flex align-items-center'>
+                                 <span
+                                    style={{
+                                       fontSize: '12px'
+                                    }}>
+                                    REVIEWED ON
+                                 </span>
+                              </div>
+                              <div className='col-6 d-flex align-items-center'>
+                                 <span
+                                    style={{
+                                       fontSize: '12px'
+                                    }}>
+                                    REVIEWED ON
+                                 </span>
+                              </div>
+                              <div className='col-6 d-flex align-items-center'>
+                                 <span className='h4 mb-0'>Clutch</span>
+                              </div>
+                              <div className='col-6 d-flex align-items-center'>
+                                 <span
+                                    style={{
+                                       fontSize: '12px'
+                                    }}>
+                                    REVIEWED ON
+                                 </span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </Grid>
+                  <Grid item xs={6} className='bg-white'>
+                     <Carousel
+                        cols={1}
+                        rows={1}
+                        gap={30}
+                        loop
+                        autoplay={2000}
+                        showDots
+                        dot={MyDot}
+                        arrowLeft={<button type="button" id="case-study-prev" className="btn btn-prev btn-icon btn-sm bg-white ms-5 mb-2" tabIndex="0" aria-label="Prev slide" style={{ position: 'absolute', right: '150px', top: '50px', zIndex: 3 }}>
+                           <i className="bx bx-chevron-left"></i>
+                        </button>}
+                        arrowRight={<button type="button" id="case-study-next" className="btn btn-next btn-icon btn-sm bg-white mb-2" tabIndex="1" aria-label="Next slide" style={{ position: 'absolute', marginLeft: '100px', right: '100px', top: '50px' }}>
+                           <i className="bx bx-chevron-right"></i>
+                        </button>}
+                        
+                     >
+                        <Carousel.Item>
+                           <div className='text-start' >
+                              <Grid cols={1}>
+                                 <Card>
+                                    <CardContent style={{ padding: "45px" }}>
+                                       <button className='btn btn-primary p-2'>
+                                          <i className='bx bxs-quote-alt-left fs-5'></i>
+                                       </button>
+
+                                       <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                          Which Food is Best for Your Pet: Dry or Wet?
+                                          When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
+                                          In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
+                                       </p>
+                                       <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
+                                          <div className='col-1 text-start d-flex align-items-center'>
+                                             <div
+                                                style={{
+                                                   width: '50px',
+                                                   height: '50px',
+                                                   borderRadius: '50%',
+                                                   overflow: 'hidden'
+                                                }}>
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                             </div>
+                                          </div>
+                                          <div className='col-11'>
+                                             <span className='h5'>Christina</span>
+                                             <br />
+                                             <span>Head of Marketing at Lorem Company</span>
+                                          </div>
+                                       </div>
+                                    </CardContent>
+
+                                 </Card>
+                              </Grid>
+                           </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                           <div className='text-start ' >
+                              <Grid cols={1}>
+                                 <Card>
+                                    <CardContent style={{ padding: "45px" }}>
+                                       <button className='btn btn-primary p-2'>
+                                          <i className='bx bxs-quote-alt-left fs-5'></i>
+                                       </button>
+
+                                       <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                          Which Food is Best for Your Pet: Dry or Wet?
+                                          When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
+                                          In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
+                                       </p>
+                                       <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
+                                          <div className='col-1 text-start d-flex align-items-center'>
+                                             <div
+                                                style={{
+                                                   width: '50px',
+                                                   height: '50px',
+                                                   borderRadius: '50%',
+                                                   overflow: 'hidden'
+                                                }}>
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                             </div>
+                                          </div>
+                                          <div className='col-11'>
+                                             <span className='h5'>Christina</span>
+                                             <br />
+                                             <span>Head of Marketing at Lorem Company</span>
+                                          </div>
+                                       </div>
+                                    </CardContent>
+
+                                 </Card>
+                              </Grid>
+                           </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                           <div className='text-start ' >
+                              <Grid cols={1}>
+                                 <Card>
+                                    <CardContent style={{ padding: "45px" }}>
+                                       <button className='btn btn-primary p-2'>
+                                          <i className='bx bxs-quote-alt-left fs-5'></i>
+                                       </button>
+
+                                       <p className='pb-2 pb-lg-3 mb-3 mt-3'>
+                                          Which Food is Best for Your Pet: Dry or Wet?
+                                          When it comes to feeding your pet, you want to make sure you're giving them the best nutrition possible. But with so many options out there, it can be hard to decide which type of food is best for your pet. Should you go with dry food or wet food?
+                                          In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
+                                       </p>
+                                       <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
+                                          <div className='col-1 text-start d-flex align-items-center'>
+                                             <div
+                                                style={{
+                                                   width: '50px',
+                                                   height: '50px',
+                                                   borderRadius: '50%',
+                                                   overflow: 'hidden'
+                                                }}>
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                             </div>
+                                          </div>
+                                          <div className='col-11'>
+                                             <span className='h5'>Christina</span>
+                                             <br />
+                                             <span>Head of Marketing at Lorem Company</span>
+                                          </div>
+                                       </div>
+                                    </CardContent>
+
+                                 </Card>
+                              </Grid>
+                           </div>
+                        </Carousel.Item>
+                     </Carousel>
+                  </Grid>
+               </Grid>
+            </div>
+         </section>
+
+         <section id='toos'>
+            <div className='container'>
+               <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                     <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"100px"}}>Integrate Top Work Tools</p>
+                     <p className='text-center' style={{padding : "0 150px", fontSize : "20px"}}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.
+                     </p>
+                  </Grid>
+               </Grid>
+            </div>
+         </section>
+
+         <section id='subscribe'>
+            <div className='container'>
+               <Grid container spacing={2} style={{backgroundColor:"#000000", borderRadius:"10px", marginTop:"30px", paddingBottom:"50px"}}>
+                  <Grid container item xs={12} display='flex' direction='column' justifyContent='center' alignItems='center'>
+                     <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#FFFFFF", marginTop:"60px"}}>One Tool — Endless Use Cases</p>
+                     <p style={{textAlign:"center", fontSize: '20px', color:"#DDDDDD"}}>Organize your tasks with a 14-day free trial</p>
+                     <ButtonGroup className='mb-2' variant="contained" aria-label="outlined primary button group">
+                        <TextField placeholder='Your Email' id="fullWidth" variant='outlined' style={{width : "300px", backgroundColor:"#FFFFFF"}}/>
+                        <Button variant='contained'>Get started for free</Button>
+                     </ButtonGroup>
+                     <p style={{textAlign:"center", fontSize: '16px', color:"#DDDDDD"}}>No subscriptions. No annual fees. No lock-ins.</p>
+                  </Grid>
+               </Grid>
             </div>
          </section>
 
@@ -947,6 +881,7 @@ const LoginPage = () => {
             <span className='btn-scroll-top-tooltip text-muted fs-sm me-2'>Top</span>
             <i className='btn-scroll-top-icon bx bx-chevron-up'></i>
          </a>
+
          <div className='modal fade' id='modalId' tabIndex={-1} role='dialog'>
             <div className='modal-dialog modal-dialog-centered' role='document'>
                <div className='modal-content'>
