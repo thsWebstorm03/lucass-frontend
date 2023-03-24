@@ -1175,19 +1175,19 @@ const LoginPage = () => {
                         alt='text1'/>
                      <ul className='list-unstyled'>
                         <li>
-                           <Link className='link-sm link-secondary1'>
+                           <Link href="#" className='link-sm link-secondary1'>
                               <i className='bx bx-phone me-1'></i>
                               153 Williamson Plaza, Maggieberg
                            </Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>
+                           <Link href="#" className='link-sm link-secondary1'>
                               <i className='bx bx-phone me-1'></i>
                               +1 (062) 109-9222
                            </Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>
+                           <Link href="#" className='link-sm link-secondary1'>
                               <i className='bx bx-mail-send me-1'></i>
                               support@krashless.com
                            </Link>
@@ -1198,10 +1198,10 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Features</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <Link className='link-sm link-secondary1'>Dashboard</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Dashboard</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Pricing</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Pricing</Link>
                         </li>
                      </ul>
                   </div>
@@ -1209,31 +1209,31 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>E-Commerce</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <Link className='link-sm link-secondary1'>Blog tools</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Blog tools</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>E-Commerce</Link>
+                           <Link href="#" className='link-sm link-secondary1'>E-Commerce</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Social media tools</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Social media tools</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Digital Ad copy</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Digital Ad copy</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Brainstorming tools</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Brainstorming tools</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Personal tools</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Personal tools</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Images</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Images</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Video Script Generator</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Video Script Generator</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Writing Tools</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Writing Tools</Link>
                         </li>
                      </ul>
                   </div>
@@ -1241,16 +1241,16 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Tools</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <Link className='link-sm link-secondary1'>Blog ideas</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Blog ideas</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Blog intro</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Blog intro</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Keyword generator</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Keyword generator</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Product description</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Product description</Link>
                         </li>
                      </ul>
                   </div>
@@ -1258,16 +1258,16 @@ const LoginPage = () => {
                      <p className='h5 pb-3'>Resources</p>
                      <ul className='list-unstyled'>
                         <li>
-                           <Link className='link-sm link-secondary1'>Your Account</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Your Account</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Genie Editor</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Genie Editor</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Get started</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Get started</Link>
                         </li>
                         <li>
-                           <Link className='link-sm link-secondary1'>Sign in</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Sign in</Link>
                         </li>
                      </ul>
                   </div>

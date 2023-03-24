@@ -34,37 +34,48 @@ const AuthProvider = ({ children }) => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)
       console.log(storedToken)
       if (storedToken) {
-      //   setLoading(true)
-      //   await axios
-      //     .get(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.meEndpoint, {
-      //       headers: {
-      //         Authorization: storedToken
-      //       }
-      //     })
-      //     .then(async response => {
-      //       setLoading(false)
-      //       setUser({ ...response.data })
+        setLoading(true)
+        await axios
+          .get(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.meEndpoint, {
+            headers: {
+              Authorization: storedToken
+            }
+          })
+          .then(async response => {
+            setLoading(false)
+            setUser({ ...response.data })
+            console.log(response.data,'response')
+            // setLoading(false)
+            // setUser({
+            //   id: 1,
+            //   role: 'admin',
+            //   password: 'admin',
+            //   fullName: 'John Doe',
+            //   username: 'johndoe',
+            //   email: 'admin@vuexy.com'
+            // })
+
             
-      //     })
-      //     .catch(() => {
-      //       localStorage.removeItem('userData')
-      //       localStorage.removeItem('refreshToken')
-      //       localStorage.removeItem('accessToken')
-      //       setUser(null)
-      //       setLoading(false)
-      //       if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-      //         router.replace('/login')
-      //       }
-      //     })
-      setLoading(false)
-      setUser({
-        id: 1,
-        role: 'admin',
-        password: 'admin',
-        fullName: 'John Doe',
-        username: 'johndoe',
-        email: 'admin@vuexy.com'
-      })
+          })
+          .catch(() => {
+            localStorage.removeItem('userData')
+            localStorage.removeItem('refreshToken')
+            localStorage.removeItem('accessToken')
+            setUser(null)
+            setLoading(false)
+            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
+              router.replace('/login')
+            }
+          })
+      // setLoading(false)
+      // setUser({
+      //   id: 1,
+      //   role: 'admin',
+      //   password: 'admin',
+      //   fullName: 'John Doe',
+      //   username: 'johndoe',
+      //   email: 'admin@vuexy.com'
+      // })
       } else {
         setLoading(false)
       }
@@ -74,34 +85,22 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   const handleLogin = (params, errorCallback, successCallback) => {
-    // axios
-    //   .post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.loginEndpoint, params)
-    //   .then(async response => {
-    //     successCallback ()
-    //     params.rememberMe
-    //       ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.token)
-    //       : null
-    //     const returnUrl = router.query.returnUrl;console.log (returnUrl, "LLKKK")
-    //     setUser({ ...response.data.user })
-    //     params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.user)) : null
-    //     const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
-    //     router.replace(redirectURL)
-    //   })
-    //   .catch(err => {
-    //     if (errorCallback) errorCallback(err)
-    //   })
-    localStorage.setItem('accessToken', 'ppp');
-    setUser({
-      id: 1,
-      role: 'admin',
-      password: 'admin',
-      fullName: 'John Doe',
-      username: 'johndoe',
-      email: 'admin@vuexy.com'
-    })
-    const returnUrl = router.query.returnUrl;
-    const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
+    axios
+      .post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.loginEndpoint, params)
+      .then(async response => {
+        successCallback ()
+        params.rememberMe
+          ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.token)
+          : null
+        const returnUrl = router.query.returnUrl;console.log (returnUrl, "LLKKK")
+        setUser({ ...response.data.user })
+        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.user)) : null
+        const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
         router.replace(redirectURL)
+      })
+      .catch(err => {
+        if (errorCallback) errorCallback(err)
+      })
   }
 
   const handleLogout = () => {
