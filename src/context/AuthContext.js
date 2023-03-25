@@ -45,17 +45,6 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
             setUser({ ...response.data })
             console.log(response.data,'response')
-            // setLoading(false)
-            // setUser({
-            //   id: 1,
-            //   role: 'admin',
-            //   password: 'admin',
-            //   fullName: 'John Doe',
-            //   username: 'johndoe',
-            //   email: 'admin@vuexy.com'
-            // })
-
-            
           })
           .catch(() => {
             localStorage.removeItem('userData')
@@ -67,15 +56,6 @@ const AuthProvider = ({ children }) => {
               router.replace('/login')
             }
           })
-      // setLoading(false)
-      // setUser({
-      //   id: 1,
-      //   role: 'admin',
-      //   password: 'admin',
-      //   fullName: 'John Doe',
-      //   username: 'johndoe',
-      //   email: 'admin@vuexy.com'
-      // })
       } else {
         setLoading(false)
       }

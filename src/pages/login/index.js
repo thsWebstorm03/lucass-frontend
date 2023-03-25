@@ -780,7 +780,7 @@ const LoginPage = () => {
                                                    borderRadius: '50%',
                                                    overflow: 'hidden'
                                                 }}>
-                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' />
+                                                <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1' />
                                              </div>
                                           </div>
                                           <div className='col-11'>

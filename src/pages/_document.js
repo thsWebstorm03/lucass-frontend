@@ -27,9 +27,9 @@ class CustomDocument extends Document {
         </Head>
         <body>
           <Main />
-          <script src={`${PUBLIC_URL}` + 'js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'}></script>
-          <script src={`${PUBLIC_URL}` + 'js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'}></script>
-          <script src={`${PUBLIC_URL}` + 'js/theme.min.js'}></script>
+          <script src={`${PUBLIC_URL}` + 'js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'} async ></script>
+          <script src={`${PUBLIC_URL}` + 'js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'} async></script>
+          <script src={`${PUBLIC_URL}` + 'js/theme.min.js'} async></script>
           <NextScript />
         </body>
       </Html>
