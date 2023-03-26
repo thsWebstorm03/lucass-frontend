@@ -165,7 +165,7 @@ const LoginPage = () => {
          <header className={`header navbar navbar-expand-lg navbar-sticky ${fixed}`} style={{ zIndex: 5, boxShadow: "#99999982 -1px 3px 9px 2px" }}>
             <div className='container'>
                <Link href='#' className='navbar-brand'>
-                  <img src='/images/logos/seeds-logo.png' width='150' alt='Silicon' />
+                  <img src='/images/lucass-logo.png' width='150' alt='Silicon' />
                </Link>
                <button
                   className='navbar-toggler'
@@ -448,8 +448,8 @@ const LoginPage = () => {
             <div className='container'>
                <Grid container spacing={2}>
                   <Grid item xs={5}>
-                     <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Task Management Assistant You Gonna Love</p>
-                     <p style={{fontSize:"18px"}}>We offer you a new generation of task management system. Plan, manage & track all your tasks in one flexible tool.</p>
+                     <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Write Better, Write Faster with Lucass</p>
+                     <p style={{fontSize:"18px"}}>Unlock endless creativity and make your writing dreams a reality with our cutting-edge AI technology. Say goodbye to writer's block and hello to endless inspiration.</p>
                      <Button type='submit' variant='contained' size='large' className='mt-4'>
                         Get started for free
                      </Button>
@@ -464,26 +464,9 @@ const LoginPage = () => {
                   <Grid item xs={7}>
                      <div style={{position : 'relative'}}>
                         <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer01.png' alt='layer' />
+                           <img src='/images/layer011.png' alt='layer' />
                         </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer02.png' alt='layer' />
-                        </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer03.png' alt='layer' />
-                        </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer04.png' alt='layer' />
-                        </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer05.png' alt='layer' />
-                        </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer06.png' alt='layer' />
-                        </div>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/landing/saas-1/hero/layer07.png' alt='layer' />
-                        </div>
+                        
                      </div>
                      
                   </Grid>
@@ -500,70 +483,34 @@ const LoginPage = () => {
          </section>
          
          <section id='organize'>
-            <div className='container' style={{marginTop:"250px"}}>
+            <div className='container' style={{marginTop:"350px"}}>
                <Grid container spacing={2}>
                   <Grid item xs={12}>
-                     <h1 className='text-center'>Stay Organized & Connected</h1>
-                  </Grid>
-               </Grid>
-               <Grid container spacing={2} className='mt-5'>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
-                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
-                     </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
-                  </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
-                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
-                     </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
-                  </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
-                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
-                     </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
-                  </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
-                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
-                     </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                     <h1 className='text-center'>What we do?</h1>
+                     <p className='text-center'>AI-powered productivity tool for all your creative needs.</p>
                   </Grid>
                </Grid>
                <Grid container spacing={2} className='mt-3'>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                        <img src="/images/seeds-abs028.png" width="50" alt="Icon" />
                      </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                     <h4 className='mt-3'>Intelligent Content Generation</h4>
+                     <p className='text-center'>Automatically generate high-quality blog posts, articles, and more with AI.</p>
                   </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                        <img src="/images/seeds-fil024.png" width="50" alt="Icon" />
                      </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                     <h4 className='mt-3'>Customizable Output</h4>
+                     <p className='text-center'>Fine-tune the tone, style, and format of your content to suit your brand's needs.</p>
                   </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
+                        <img src="/images/seeds-abs050.png" width="50" alt="Icon" />
                      </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
-                  </Grid>
-                  <Grid item xs={3} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
-                     <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
-                        <img src="/images/landing/saas-1/features/chat.svg" width="32" alt="Icon" />
-                     </div>
-                     <h4 className='mt-3'>Task Comments</h4>
-                     <p className='text-center'>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+                     <h4 className='mt-3'>In-Depth Analytics</h4>
+                     <p className='text-center'>Track performance of your content and see topics resonating with your audience.</p>
                   </Grid>
                </Grid>
             </div>
@@ -573,35 +520,36 @@ const LoginPage = () => {
             <div className='container' style={{marginTop:"100px"}}>
                <Grid container spacing={5} >
                   <Grid item xs={7}>
-                     <img src='/images/landing/saas-1/dashboard.png' width='100%' alt='manage' />
+                     <img src='/images/new_slider1.jpg' width='100%' alt='manage' style={{boxShadow : "#000 0 0 5px"}} />
                   </Grid>
                   <Grid item xs={5} display='flex' justifyContent='end' alignItems='center'>
                      <div>
-                        <p className='h3'>Manage Your Work</p>
+                        <p className='h3'>Generating creative images.</p>
                         <ul className="list-unstyled pb-2">
                            <li className="d-flex align-items-center pb-1 mb-2">
                               <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
-                              Powerful project management
+                              Powerful image generation
                            </li>
                            <li className="d-flex align-items-center pb-1 mb-2">
                               <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
-                              Transparent work management
+                              Members-only content added monthly
                            </li>
                            <li className="d-flex align-items-center pb-1 mb-2">
                               <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
-                              Manage work &amp; focus on the most important tasks
+                              Find the image what you want very quickly
                            </li>
                            <li className="d-flex align-items-center pb-1 mb-2">
                               <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
-                              Track your progress with interactive charts
+                              Unlimited royalty-free downloads
                            </li>
                            <li className="d-flex align-items-center pb-1 mb-2">
                               <i className="bx bx-check-circle text-primary fs-xl me-2"></i>
-                              Easiest way to track time spent on tasks
+                              Enhanced legal protections
+
                            </li>
                         </ul>
                         <Button type='submit' variant='contained' size='large' className='mt-2'>
-                           Learn more
+                           Find more
                            <i className='bx bx-right-arrow ps-2'></i>
                         </Button>
                      </div>
@@ -616,7 +564,7 @@ const LoginPage = () => {
             <div className='container'>
                <Grid container spacing={0}>
                   <Grid item xs={12}>
-                     <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"120px"}}>One Tool — Endless Use Cases</p>
+                     <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"120px"}}>Comprehensive suite of tools</p>
                   </Grid>
                   <Grid item xs={12} display='flex' justifyContent='center'>
                      <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
@@ -625,11 +573,11 @@ const LoginPage = () => {
                      </Button>
                      <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
-                        Remote work
+                        seamless collaboration
                      </Button>
                      <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
-                        Product Release
+                        easy navigation
                      </Button>
                      <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
@@ -639,8 +587,9 @@ const LoginPage = () => {
                </Grid>
                <Grid container style={{backgroundColor:"#f3f6ff",marginTop:"60px", padding:"45px 80px 20px 80px"}}>
                   <Grid container item xs={5} display='flex' direction='column' justifyContent='center' alignItems='start'>
-                     <p className='h3 mb-2'>Project management</p>
-                     <p>Vestibulum nunc lectus auctor quis. Natoque lectus tortor lacus, eu. Nunc feugiat nisl maecenas nulla hac morbi. Vitae, donec facilisis sed nunc netus. Venenatis posuere faucibus enim est. Vel dignissim morbi blandit morbi tellus. Arcu ullamcorper quis enim.</p>
+                     <p className='h3 mb-4'>Explore your possibilities</p>
+                     <p>Unlock the full potential of your projects with our comprehensive suite of tools designed for seamless collaboration and easy navigation.</p>
+                     <p>It will helps you to explore your possibilities.</p>
                   </Grid>
                   <Grid item xs={5}>
                      <img src="/images/landing/saas-1/use-cases/01.png" className="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image" />
@@ -734,7 +683,7 @@ const LoginPage = () => {
                                           In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
                                        </p>
                                        <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                          <div className='col-1 text-start d-flex align-items-center'>
+                                          <div className='text-start d-flex align-items-center' style={{width : "60px"}}>
                                              <div
                                                 style={{
                                                    width: '50px',
@@ -745,7 +694,7 @@ const LoginPage = () => {
                                                 <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1'/>
                                              </div>
                                           </div>
-                                          <div className='col-11'>
+                                          <div className='col-10'>
                                              <span className='h5'>Christina</span>
                                              <br />
                                              <span>Head of Marketing at Lorem Company</span>
@@ -772,7 +721,7 @@ const LoginPage = () => {
                                           In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
                                        </p>
                                        <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                          <div className='col-1 text-start d-flex align-items-center'>
+                                          <div className='text-start d-flex align-items-center' style={{width : "60px"}}>
                                              <div
                                                 style={{
                                                    width: '50px',
@@ -783,7 +732,7 @@ const LoginPage = () => {
                                                 <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1' />
                                              </div>
                                           </div>
-                                          <div className='col-11'>
+                                          <div className='col-10'>
                                              <span className='h5'>Christina</span>
                                              <br />
                                              <span>Head of Marketing at Lorem Company</span>
@@ -810,7 +759,7 @@ const LoginPage = () => {
                                           In this blog post, we'll explore the differences between dry and wet food, and provide some tips on how to choose the right food for your pet.
                                        </p>
                                        <div className='d-flex flex-wrap justify-content-start mt-3 p-2 mb-2'>
-                                          <div className='col-1 text-start d-flex align-items-center'>
+                                          <div className='text-start d-flex align-items-center' style={{width : "60px"}}>
                                              <div
                                                 style={{
                                                    width: '50px',
@@ -821,7 +770,7 @@ const LoginPage = () => {
                                                 <img src={`${PUBLIC_URL}` + 'images/avatar/01.jpg'} width='50px' height='50px' alt='text1' />
                                              </div>
                                           </div>
-                                          <div className='col-11'>
+                                          <div className='col-10'>
                                              <span className='h5'>Christina</span>
                                              <br />
                                              <span>Head of Marketing at Lorem Company</span>
@@ -845,7 +794,7 @@ const LoginPage = () => {
                   <Grid item xs={12}>
                      <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"100px"}}>Integrate Top Work Tools</p>
                      <p className='text-center' style={{padding : "0 150px", fontSize : "20px"}}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.
+                     Lucass has truly been a game-changer for our business. Their advanced technology and seamless integration have made it easier for us to accomplish our daily tasks.
                      </p>
                   </Grid>
                </Grid>
@@ -1170,7 +1119,7 @@ const LoginPage = () => {
                   <div className='col-3'>
                      <img
                         className='mb-4'
-                        src={`${PUBLIC_URL}` + 'images/logos/seeds-logo.png'}
+                        src={'/images/lucass-logo.png'}
                         width={'200px'} 
                         alt='text1'/>
                      <ul className='list-unstyled'>
@@ -1189,7 +1138,7 @@ const LoginPage = () => {
                         <li>
                            <Link href="#" className='link-sm link-secondary1'>
                               <i className='bx bx-mail-send me-1'></i>
-                              support@krashless.com
+                              support@lucass.com
                            </Link>
                         </li>
                      </ul>
@@ -1261,7 +1210,7 @@ const LoginPage = () => {
                            <Link href="#" className='link-sm link-secondary1'>Your Account</Link>
                         </li>
                         <li>
-                           <Link href="#" className='link-sm link-secondary1'>Genie Editor</Link>
+                           <Link href="#" className='link-sm link-secondary1'>Lucass Editor</Link>
                         </li>
                         <li>
                            <Link href="#" className='link-sm link-secondary1'>Get started</Link>
@@ -1277,7 +1226,7 @@ const LoginPage = () => {
          <footer className='footer  pt-3 pb-4 pb-lg-5'>
             <div className='container border-top pt-2 pt-md-4 pt-lg-5 pb-xl-3'>
                <div className='row d-flex justify-content-center'>
-                  <p className='text-center'>© Genie 2023. All rights reserved.</p>
+                  <p className='text-center'>© Lucass 2023. All rights reserved.</p>
                   <p className='text-center'>
                      When you visit or interact with our sites, services or tools, we or our
                      authorised service providers may use cookies for storing information to help
