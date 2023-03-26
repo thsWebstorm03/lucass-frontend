@@ -9,6 +9,7 @@ import axios from 'axios'
 
 // ** Config
 import authConfig from 'src/configs/auth'
+import {BASE_URL} from 'src/configs'
 
 // ** Defaults
 const defaultProvider = {
@@ -36,7 +37,7 @@ const AuthProvider = ({ children }) => {
       if (storedToken) {
         setLoading(true)
         await axios
-          .get(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.meEndpoint, {
+          .get(BASE_URL + authConfig.meEndpoint, {
             headers: {
               Authorization: storedToken
             }
@@ -66,7 +67,7 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = (params, errorCallback, successCallback) => {
     axios
-      .post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.loginEndpoint, params)
+      .post(BASE_URL + authConfig.loginEndpoint, params)
       .then(async response => {
         successCallback ()
         params.rememberMe
@@ -91,7 +92,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleRegister = (params, errorCallback, successCallback) => {console.log (params)
-    axios.post(process.env.NEXT_PUBLIC_JWT_BASE_URL + authConfig.registerEndpoint, params)
+    axios.post(BASE_URL + authConfig.registerEndpoint, params)
       .then(res => {
         if(successCallback) successCallback () 
         const user = res.data
