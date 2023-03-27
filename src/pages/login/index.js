@@ -93,15 +93,7 @@ const LoginPage = () => {
    const [password, setPassword] = useState('')
    const [show, setShow] = useState('')
 
-   const particlesInit = useCallback(async engine => {
-      console.log(engine);
-      await loadFull(engine);
-   }, []);
-
-   const particlesLoaded = useCallback(async container => {
-         await console.log(container);
-   }, []);
-
+   
    const auth = useAuth()
    const theme = useTheme()
    const bgColors = useBgColor()
@@ -144,6 +136,15 @@ const LoginPage = () => {
          }}
       ></span>
    )
+
+   const particlesInit = useCallback(async engine => {
+      await loadFull(engine);
+   }, []);
+
+   const particlesLoaded = useCallback(async container => {
+         await console.log(container);
+   }, []);
+
    useEffect(() => {
       if (typeof window != undefined) {
          window.onscroll = ev => {
@@ -151,8 +152,7 @@ const LoginPage = () => {
                setBacktop('show')
                setFixed('navbar-stuck')
             } else {
-               setBacktop('')
-               setFixed('')
+               setBackto
             }
          }
       }
@@ -447,7 +447,7 @@ const LoginPage = () => {
          <section id='slider'>
             <div className='container'>
                <Grid container spacing={2}>
-                  <Grid item xs={5}>
+                  <Grid item xs={12} md={5} lg={5} xl={5}>
                      <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Write Better, Write Faster with Lucass</p>
                      <p style={{fontSize:"18px"}}>Unlock endless creativity and make your writing dreams a reality with our cutting-edge AI technology. Say goodbye to writer's block and hello to endless inspiration.</p>
                      <Button type='submit' variant='contained' size='large' className='mt-4'>
@@ -461,13 +461,10 @@ const LoginPage = () => {
                         <img src='/images/07.svg' width={135} alt='logo'/>
                      </div>
                   </Grid>
-                  <Grid item xs={7}>
-                     <div style={{position : 'relative'}}>
-                        <div style={{zIndex : 2, position :"absolute",left:0, top:0, transform: "translate3d(-10.6px, -30.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/layer011.png' alt='layer' />
+                  <Grid item xs={12} md={7} lg={7} xl={5}>
+                        <div style={{zIndex : 2, transform: "translate3d(-10.6px, 10.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                           <img src='/images/layer011.png' height={"100%"} alt='layer' />
                         </div>
-                        
-                     </div>
                      
                   </Grid>
                </Grid>
@@ -483,7 +480,7 @@ const LoginPage = () => {
          </section>
          
          <section id='organize'>
-            <div className='container' style={{marginTop:"350px"}}>
+            <div className='container' style={{marginTop:"50px"}}>
                <Grid container spacing={2}>
                   <Grid item xs={12}>
                      <h1 className='text-center'>What we do?</h1>
@@ -491,21 +488,21 @@ const LoginPage = () => {
                   </Grid>
                </Grid>
                <Grid container spacing={2} className='mt-3'>
-                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={12} md={4} lg={4} xl={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
                         <img src="/images/seeds-abs028.png" width="50" alt="Icon" />
                      </div>
                      <h4 className='mt-3'>Intelligent Content Generation</h4>
                      <p className='text-center'>Automatically generate high-quality blog posts, articles, and more with AI.</p>
                   </Grid>
-                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={12} md={4} lg={4} xl={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
                         <img src="/images/seeds-fil024.png" width="50" alt="Icon" />
                      </div>
                      <h4 className='mt-3'>Customizable Output</h4>
                      <p className='text-center'>Fine-tune the tone, style, and format of your content to suit your brand's needs.</p>
                   </Grid>
-                  <Grid item xs={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
+                  <Grid item xs={12} md={4} lg={4} xl={4} style={{display :'flex', flexDirection:"column", justifyContent:"center", alignItems:'center'}}>
                      <div style={{padding:"20px", borderRadius:"50px", backgroundColor:"#f3f6ff", width:"70px"}}>
                         <img src="/images/seeds-abs050.png" width="50" alt="Icon" />
                      </div>
@@ -519,11 +516,11 @@ const LoginPage = () => {
          <section id='manage'>
             <div className='container' style={{marginTop:"100px"}}>
                <Grid container spacing={5} >
-                  <Grid item xs={7}>
+                  <Grid item xs={12} md={7} lg={7} xl={7}>
                      <img src='/images/new_slider1.jpg' width='100%' alt='manage' style={{boxShadow : "#000 0 0 5px"}} />
                   </Grid>
-                  <Grid item xs={5} display='flex' justifyContent='end' alignItems='center'>
-                     <div>
+                  <Grid item xs={12} md={5} lg={5} xl={5} display='flex' justifyContent='end' alignItems='center'>
+                     <div style={{width :"100%"}}>
                         <p className='h3'>Generating creative images.</p>
                         <ul className="list-unstyled pb-2">
                            <li className="d-flex align-items-center pb-1 mb-2">
@@ -563,36 +560,44 @@ const LoginPage = () => {
          <section id='oneTool'>
             <div className='container'>
                <Grid container spacing={0}>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} >
                      <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"120px"}}>Comprehensive suite of tools</p>
                   </Grid>
-                  <Grid item xs={12} display='flex' justifyContent='center'>
-                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+               </Grid>
+               <Grid container spacing={2} >
+                  <Grid item xs={12} md={6} lg={3} xl={3}>
+                     <Button type='submit' fullWidth variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
                         Project Management
                      </Button>
-                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={3} xl={3}>
+                     <Button type='submit' fullWidth variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
                         seamless collaboration
                      </Button>
-                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={3} xl={3}>
+                     <Button type='submit' fullWidth variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
                         easy navigation
                      </Button>
-                     <Button type='submit' variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
+                  </Grid>
+                  <Grid item xs={12} md={6} lg={3} xl={3}>
+                     <Button type='submit' fullWidth variant='contained' size='medium' className='mt-4 me-2' style={{borderRadius:"5px"}}>
                         <i className='bx bxs-star'></i>
                         Campaign Planning
                      </Button>
                   </Grid>
                </Grid>
-               <Grid container style={{backgroundColor:"#f3f6ff",marginTop:"60px", padding:"45px 80px 20px 80px"}}>
-                  <Grid container item xs={5} display='flex' direction='column' justifyContent='center' alignItems='start'>
+               <Grid container style={{backgroundColor:"#f3f6ff",marginTop:"60px"}}>
+                  <Grid container item xs={12} md={6} lg={6} xl={6} display='flex' direction='column' justifyContent='center' alignItems='start'>
                      <p className='h3 mb-4'>Explore your possibilities</p>
                      <p>Unlock the full potential of your projects with our comprehensive suite of tools designed for seamless collaboration and easy navigation.</p>
                      <p>It will helps you to explore your possibilities.</p>
                   </Grid>
-                  <Grid item xs={5}>
-                     <img src="/images/landing/saas-1/use-cases/01.png" className="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image" />
+                  <Grid item xs={12} md={6} lg={6} xl={6}>
+                     <img src="/images/landing/saas-1/use-cases/01.png" className="d-block my-lg-2 mx-auto me-md-0" width="100%" alt="Image" />
                   </Grid>
                </Grid>
                
@@ -602,7 +607,7 @@ const LoginPage = () => {
          <section id='desktop1'>
             <div className='container mt-5'>
                <Grid container spacing={2}>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} md={12} lg={6} xl={6}>
                      <div
                         className='dark-mode card h-100 zi-1'
                         style={{
@@ -651,7 +656,7 @@ const LoginPage = () => {
                         </div>
                      </div>
                   </Grid>
-                  <Grid item xs={6} className='bg-white'>
+                  <Grid item xs={12} md={12} lg={6} xl={6} className='bg-white'>
                      <Carousel
                         cols={1}
                         rows={1}
@@ -788,13 +793,13 @@ const LoginPage = () => {
             </div>
          </section>
 
-         <section id='toos'>
+         <section id='tools'>
             <div className='container'>
                <Grid container spacing={2}>
                   <Grid item xs={12}>
                      <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#000000", marginTop:"100px"}}>Integrate Top Work Tools</p>
-                     <p className='text-center' style={{padding : "0 150px", fontSize : "20px"}}>
-                     Lucass has truly been a game-changer for our business. Their advanced technology and seamless integration have made it easier for us to accomplish our daily tasks.
+                     <p className='text-center' style={{fontSize : "20px"}}>
+                        Lucass has truly been a game-changer for our business. Their advanced technology and seamless integration have made it easier for us to accomplish our daily tasks.
                      </p>
                   </Grid>
                </Grid>
@@ -1116,7 +1121,7 @@ const LoginPage = () => {
          <footer className='footer border-top pt-3 pb-4 pb-lg-5 mt-5'>
             <div className='container pt-2 pt-md-4 pt-lg-5 pb-xl-3'>
                <div className='row d-flex justify-content-between'>
-                  <div className='col-3'>
+                  <div className='col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4'>
                      <img
                         className='mb-4'
                         src={'/images/lucass-logo.png'}
@@ -1143,7 +1148,7 @@ const LoginPage = () => {
                         </li>
                      </ul>
                   </div>
-                  <div className='col-2'>
+                  <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>Features</p>
                      <ul className='list-unstyled'>
                         <li>
@@ -1154,7 +1159,7 @@ const LoginPage = () => {
                         </li>
                      </ul>
                   </div>
-                  <div className='col-2'>
+                  <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>E-Commerce</p>
                      <ul className='list-unstyled'>
                         <li>
@@ -1186,7 +1191,7 @@ const LoginPage = () => {
                         </li>
                      </ul>
                   </div>
-                  <div className='col-2'>
+                  <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>Tools</p>
                      <ul className='list-unstyled'>
                         <li>
@@ -1203,7 +1208,7 @@ const LoginPage = () => {
                         </li>
                      </ul>
                   </div>
-                  <div className='col-2'>
+                  <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>Resources</p>
                      <ul className='list-unstyled'>
                         <li>
