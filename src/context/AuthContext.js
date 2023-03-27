@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
       if (storedToken) {
         setLoading(true)
         await axios
-          .get(BASE_URL + authConfig.meEndpoint, {
+          .get(authConfig.meEndpoint, {
             headers: {
               Authorization: storedToken
             }
@@ -67,7 +67,7 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = (params, errorCallback, successCallback) => {
     axios
-      .post(BASE_URL + authConfig.loginEndpoint, params)
+      .post(authConfig.loginEndpoint, params)
       .then(async response => {
         successCallback ()
         params.rememberMe
@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleRegister = (params, errorCallback, successCallback) => {console.log (params)
-    axios.post(BASE_URL + authConfig.registerEndpoint, params)
+    axios.post(authConfig.registerEndpoint, params)
       .then(res => {
         if(successCallback) successCallback () 
         const user = res.data

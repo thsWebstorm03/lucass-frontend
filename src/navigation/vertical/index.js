@@ -8,11 +8,15 @@ const navigation = () => {
       children: [
         {
           title: 'Library',
-          path: '/dashboards/library'
+          action: 'read',
+          subject: 'acl-page',
+          path: '/dashboards/library',
         },
         {
           title: 'History',
-          path: '/dashboards/history'
+          action: 'read',
+          subject: 'acl-page',
+          path: '/dashboards/history',
         }
       ]
     },
@@ -24,6 +28,8 @@ const navigation = () => {
       children: [
         {
           title: 'Blog ideas',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/blog-tools/blog-ideas'
         },
         {

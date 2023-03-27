@@ -110,6 +110,5 @@
     "react-credit-cards": {
       "react": "$react"
     }
-  },
-  "proxy" : "http://localhost:5001"
+  }
 }
