@@ -1,10 +1,8 @@
-// ** React Imports
 import { useState } from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
+import toast from 'react-hot-toast'
 
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -22,39 +20,54 @@ import MenuItem from '@mui/material/MenuItem'
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import { Divider } from '@mui/material'
+import {BASE_URL} from 'src/configs'
 
-const BlogIdeasForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+const BlogIntroForm = (props) => {
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
+   const [title, setTitle] = useState("")
+   const [des, setDes] = useState("")
+   const [tone, setTone] = useState("Friendly")
+   const [lang, setLang] = useState("English")
 
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
+   const onTitleChange = (e) => {
+      setTitle(e.target.value)
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
+   const onDesChange = (e) => {
+      setDes(e.target.value)
    }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
+   const onToneChange = (e) => {
+      setTone(e.target.value)
    }
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
+   const onLangChange = (e) => {
+      setLang(e.target.value)
+   }
+
+   const [btnText, setBtnText] = useState("Create content")
+
+   const onClick = () => {
+      if (title.trim() == "" || des.trim() == "") {
+         toast.error("Please Fill in items")
+      } else if (des.length < 30) {
+         toast.error("Description must be more than 30 letters")
+      } else {
+         generateIntro()
+      }
+   }
+
+   const generateIntro = async() => {
+
+      setBtnText("Loading...")
+      const response = await axios.post(BASE_URL + '/api/blogs/intro', {
+         "title": title,
+         "about": des,
+         "tone": tone,
+         "lang": lang
       })
+      setBtnText("Create Content")
+      props.handleIntro(response.data.completion_text)
    }
 
    return (
@@ -80,6 +93,7 @@ const BlogIdeasForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onTitleChange}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -88,6 +102,7 @@ const BlogIdeasForm = () => {
                            mb: 2,
                            fontWeight: 500
                         }}
+                        
                      >
                         What is the blog about?
                      </Typography>
@@ -100,6 +115,7 @@ const BlogIdeasForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onDesChange}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -116,6 +132,7 @@ const BlogIdeasForm = () => {
                            defaultValue='Friendly'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onToneChange}
                         >
                            <MenuItem value={'Friendly'}>Friendly</MenuItem>
                            <MenuItem value={'Luxury'}>Luxury</MenuItem>
@@ -138,6 +155,7 @@ const BlogIdeasForm = () => {
                            defaultValue='english'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onLangChange}
                         >
                            <MenuItem value={'english'}>English</MenuItem>
                            <MenuItem value={'spanish'}>Spanish</MenuItem>
@@ -154,8 +172,8 @@ const BlogIdeasForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Create content
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>
@@ -166,4 +184,4 @@ const BlogIdeasForm = () => {
    )
 }
 
-export default BlogIdeasForm
+export default BlogIntroForm

@@ -1,5 +1,7 @@
 // ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
+
 
 // ** Next Import
 import Link from 'next/link'
@@ -22,39 +24,48 @@ import { Divider } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import {BASE_URL} from 'src/configs'
 
-const BlogIdeasForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+const BlogIdeasForm = (props) => {
+   
+   const [topic, setTopic] = useState("")
+   const [tone, setTone] = useState("Friendly")
+   const [lang, setLang] = useState("English")
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
-
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
+   const onTopicChange = (e) => {
+      setTopic(e.target.value)
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
+   const onToneChange = (e) => {
+      setTone(e.target.value)
    }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
+   const onLangChange = (e) => {
+      setLang(e.target.value)
    }
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
+   const [btnText, setBtnText] = useState("Create content")
+
+   const onClick = () => {
+      if (topic.trim() == "") {
+         toast.error("Please Fill in items")
+      } else if (topic.length < 30) {
+         toast.error("Description must be more than 30 letters")
+      } else {
+         generateKeyword()
+      }
+   }
+
+   const generateKeyword = async() => {
+
+      setBtnText("Loading...")
+      const response = await axios.post(BASE_URL + '/api/blogs/keyword', {
+         "topic": topic,
+         "tone": tone,
+         "lang": lang
       })
+      setBtnText("Create Content")
+      props.handleKeyword(response.data.completion_text)
    }
 
    return (
@@ -83,6 +94,7 @@ const BlogIdeasForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onTopicChange}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -99,6 +111,7 @@ const BlogIdeasForm = () => {
                            defaultValue='Friendly'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onToneChange}
                         >
                            <MenuItem value={'Friendly'}>Friendly</MenuItem>
                            <MenuItem value={'Luxury'}>Luxury</MenuItem>
@@ -121,6 +134,7 @@ const BlogIdeasForm = () => {
                            defaultValue='english'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onLangChange}
                         >
                            <MenuItem value={'english'}>English</MenuItem>
                            <MenuItem value={'spanish'}>Spanish</MenuItem>
@@ -137,8 +151,8 @@ const BlogIdeasForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Create content
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>
