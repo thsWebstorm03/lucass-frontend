@@ -1,12 +1,6 @@
-// ** React Imports
 import {useState, createContext} from 'react'
 import axios from 'axios'
 
-
-// ** Next Import
-import Link from 'next/link'
-
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -22,7 +16,6 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import { Divider } from '@mui/material'
 
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import {BASE_URL} from 'src/configs'
 
@@ -56,16 +49,19 @@ const BlogIdeasForm = (props) => {
       }
    }
 
-   const generateKeyword = async() => {
+   const generateKeyword = async () => {
 
-      setBtnText("Loading...")
+      setBtnText("Loading...");
+      
       const response = await axios.post(BASE_URL + '/api/blogs/keyword', {
          "topic": topic,
          "tone": tone,
          "lang": lang
-      })
-      setBtnText("Create Content")
-      props.handleKeyword(response.data.completion_text)
+      });
+
+      setBtnText("Create Content");
+
+      props.handleKeyword(response.data.completion_text);
    }
 
    return (

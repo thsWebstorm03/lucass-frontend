@@ -1,9 +1,7 @@
-// ** React Imports
 import {useState, createContext} from 'react'
 import axios from 'axios'
 
 import toast from 'react-hot-toast'
-// ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -18,7 +16,6 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import {Divider} from '@mui/material'
 import {BASE_URL} from 'src/configs'
@@ -58,17 +55,18 @@ const BlogIdeasForm = (props) => {
       }
    }
 
-   const generateIdea = async() => {
+   const generateIdea = async () => {
 
-      setBtnText("Loading...")
+      setBtnText("Loading...");
+      
       const response = await axios.post(BASE_URL + '/api/blogs/ideas', {
          "name": name,
          "des": des,
          "tone": tone,
          "lang": lang
       })
-      setBtnText("Create Content")
-      props.handleIdea(response.data.completion_text)
+      setBtnText("Create Content");
+      props.handleIdea(response.data.completion_text);
    }
 
    return (
@@ -91,8 +89,8 @@ const BlogIdeasForm = (props) => {
                         label=''
                         placeholder=''
                         InputLabelProps={{
-                        shrink: true
-                     }}
+                           shrink: true
+                        }}
                         onChange={onNameChange}/>
                   </Grid>
                   <Grid item xs={12}>

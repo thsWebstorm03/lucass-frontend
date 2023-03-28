@@ -4,8 +4,7 @@ import {EditorState, Modifier} from 'draft-js'
 import ReactDraftWysiwyg from 'src/@core/components/react-draft-wysiwyg'
 
 const PlaygroundEditor = (props) => {
-   const [value,
-      setValue] = useState(EditorState.createEmpty())
+   const [value, setValue] = useState(EditorState.createEmpty());
 
    const sendTextToEditor = (text) => {
       setValue(insertText(text, value));
@@ -18,6 +17,7 @@ const PlaygroundEditor = (props) => {
       const newContent = Modifier.replaceText(currentContent, currentSelection, text);
 
       const newEditorState = EditorState.push(editorState, newContent, 'insert-characters');
+      
       return EditorState.forceSelection(newEditorState, newContent.getSelectionAfter());
    }
 

@@ -17,7 +17,6 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
-// ** Icon Imports
 import Icon from 'src/@core/components/icon'
 import { Divider } from '@mui/material'
 import {BASE_URL} from 'src/configs'
@@ -57,17 +56,20 @@ const BlogIntroForm = (props) => {
       }
    }
 
-   const generateIntro = async() => {
+   const generateIntro = async () => {
 
-      setBtnText("Loading...")
+      setBtnText("Loading...");
+      
       const response = await axios.post(BASE_URL + '/api/blogs/intro', {
          "title": title,
          "about": des,
          "tone": tone,
          "lang": lang
-      })
-      setBtnText("Create Content")
-      props.handleIntro(response.data.completion_text)
+      });
+      
+      setBtnText("Create Content");
+
+      props.handleIntro(response.data.completion_text);
    }
 
    return (

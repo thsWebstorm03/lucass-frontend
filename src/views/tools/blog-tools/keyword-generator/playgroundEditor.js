@@ -18,6 +18,7 @@ const PlaygroundEditor = (props) => {
       const newContent = Modifier.replaceText(currentContent, currentSelection, text);
 
       const newEditorState = EditorState.push(editorState, newContent, 'insert-characters');
+      
       return EditorState.forceSelection(newEditorState, newContent.getSelectionAfter());
    }
 
