@@ -115,7 +115,7 @@ const AuthProvider = ({ children }) => {
     }
     fetch(BASE_URL + authConfig.registerEndpoint, { method: "POST", headers: customHeaders, mode: 'no-cors', body: JSON.stringify(params) })
       .then((res) => res.json())
-      .then(data => { console.log (data, "HHHHHHHHH")
+      .then(data => { 
         if (successCallback) successCallback()
         if (data._id == undefined) {
           if (errorCallback) errorCallback(data)

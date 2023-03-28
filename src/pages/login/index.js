@@ -165,7 +165,7 @@ const LoginPage = () => {
          <header className={`header navbar navbar-expand-lg navbar-sticky ${fixed}`} style={{ zIndex: 5, boxShadow: "#99999982 -1px 3px 9px 2px" }}>
             <div className='container'>
                <Link href='#' className='navbar-brand'>
-                  <img src='/images/lucass-logo.png' width='150' alt='Silicon' />
+                  <img src='/images/lucass-logo.png' width='200' alt='Silicon' />
                </Link>
                <button
                   className='navbar-toggler'

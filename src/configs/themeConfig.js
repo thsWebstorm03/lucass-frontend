@@ -6,8 +6,8 @@
  */
 const themeConfig = {
   // ** Layout Configs
-  templateName: 'Vuexy' /* App Name */,
-  logoName: 'seed-logo.png',
+  templateName: 'Lucass' /* App Name */,
+  logoName: 'lucass-logo.png',
   layout: 'vertical' /* vertical | horizontal */,
   mode: 'light' /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   direction: 'ltr' /* ltr | rtl */,

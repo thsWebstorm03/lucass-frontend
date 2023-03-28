@@ -96,9 +96,9 @@ const VerticalNavHeader = props => {
         <LinkStyled href='/dashboards/library'>
           <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2.5 }) }}>
             <img
-              src={PUBLIC_URL + '/images/logos/seeds-logo.png'}
+              src={PUBLIC_URL + '/images/lucass-logo.png'}
               alt='logo'
-              style={{ width: '100%', maxWidth: '7.5rem', maxHeight: '7.5rem' }}
+              style={{ width: '100%', maxWidth: '200px', maxHeight: '7.5rem' }}
             />
           </HeaderTitle>
         </LinkStyled>

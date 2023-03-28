@@ -33,11 +33,10 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)
-      console.log(storedToken)
       if (storedToken) {
         setLoading(true)
         await axios
-          .get(authConfig.meEndpoint, {
+          .get(BASE_URL+authConfig.meEndpoint, {
             headers: {
               Authorization: storedToken
             }
@@ -45,7 +44,6 @@ const AuthProvider = ({ children }) => {
           .then(async response => {
             setLoading(false)
             setUser({ ...response.data })
-            console.log(response.data,'response')
           })
           .catch(() => {
             localStorage.removeItem('userData')
@@ -67,13 +65,13 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = (params, errorCallback, successCallback) => {
     axios
-      .post(authConfig.loginEndpoint, params)
+      .post(BASE_URL+authConfig.loginEndpoint, params)
       .then(async response => {
         successCallback ()
         params.rememberMe
           ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.token)
           : null
-        const returnUrl = router.query.returnUrl;console.log (returnUrl, "LLKKK")
+        const returnUrl = router.query.returnUrl;
         setUser({ ...response.data.user })
         params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.user)) : null
         const redirectURL = returnUrl && returnUrl !== '/' ? 'dashboards/library' : '/'
@@ -92,14 +90,13 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleRegister = (params, errorCallback, successCallback) => {console.log (params)
-    axios.post(authConfig.registerEndpoint, params)
+    axios.post(BASE_URL+authConfig.registerEndpoint, params)
       .then(res => {
         if(successCallback) successCallback () 
         const user = res.data
         if (user.error) {
           if (errorCallback) errorCallback(res.data.error)
         } else {
-          console.log ("success register")
           handleLogin({ email: user.email, password: user.password })
         }
       })

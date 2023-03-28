@@ -34,10 +34,14 @@ const navigation = () => {
         },
         {
           title: 'Blog intro',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/blog-tools/blog-intro'
         },
         {
           title: 'Keyword generator',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/blog-tools/keyword-generator'
         }
       ]
@@ -47,10 +51,14 @@ const navigation = () => {
       children: [
         {
           title: 'Product description',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/eCommerce/product-description'
         },
         {
           title: 'Short text hook',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/eCommerce/short-text-hook'
         }
       ]
@@ -60,14 +68,20 @@ const navigation = () => {
       children: [
         {
           title: 'YouTube video ideas',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/social-media-tools/youTube-video-ideas'
         },
         {
           title: 'Instagram captions',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/social-media-tools/instagram-captions'
         },
         {
           title: 'Hashtag generator',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/social-media-tools/hashtag-generator'
         }
       ]
@@ -77,10 +91,14 @@ const navigation = () => {
       children: [
         {
           title: 'Ad copy variants',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/digital-ad-copy/ad-copy-variants'
         },
         {
           title: 'General Ad copy',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/digital-ad-copy/general-ad-copy'
         }
       ]
@@ -90,10 +108,14 @@ const navigation = () => {
       children: [
         {
           title: 'Name generator',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/brainstorming-tools/name-generator'
         },
         {
           title: 'Startup ideas',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/brainstorming-tools/startup-ideas'
         }
       ]
@@ -104,10 +126,14 @@ const navigation = () => {
       children: [
         {
           title: 'Love letter',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/personal-tools/love-letter'
         },
         {
           title: 'Cover letter',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/personal-tools/cover-letter'
         }
       ]
@@ -119,18 +145,26 @@ const navigation = () => {
       children: [
         {
           title: 'Oil painting',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/images/oil-painting'
         },
         {
           title: 'Watercolor',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/images/watercolor'
         },
         {
           title: 'Sketch',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/images/sketch'
         },
         {
           title: 'Pop art',
+          action: 'read',
+          subject: 'acl-page',
           path: '/tools/images/pop-art'
         }
       ]
@@ -140,22 +174,32 @@ const navigation = () => {
     },
     {
       title: 'Profile',
+      action: 'read',
+      subject: 'acl-page',
       path: '/account/profile'
     },
     {
       title: 'Subscription',
+      action: 'read',
+      subject: 'acl-page',
       path: '/account/subscription'
     },
     {
       title: 'Payments',
+      action: 'read',
+      subject: 'acl-page',
       path: '/account/payments'
     },
     {
       title: 'Settings',
+      action: 'read',
+      subject: 'acl-page',
       path: '/account/settings'
     },
     {
       title: 'Logout',
+      action: 'read',
+      subject: 'acl-page',
       path: '/account/logout'
     }
   ]

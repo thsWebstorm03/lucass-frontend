@@ -1,9 +1,8 @@
 // ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
-
+import toast from 'react-hot-toast'
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -21,45 +20,60 @@ import MenuItem from '@mui/material/MenuItem'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
-import { Divider } from '@mui/material'
+import {Divider} from '@mui/material'
+import {BASE_URL} from 'src/configs'
 
-const BlogIdeasForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+const BlogIdeasForm = (props) => {
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
+   const [name, setName] = useState("")
+   const [des, setDes] = useState("")
+   const [tone, setTone] = useState("Friendly")
+   const [lang, setLang] = useState("English")
 
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
+   const onNameChange = (e) => {
+      setName(e.target.value)
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
+   const onDesChange = (e) => {
+      setDes(e.target.value)
    }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
+   const onToneChange = (e) => {
+      setTone(e.target.value)
    }
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
+   const onLangChange = (e) => {
+      setLang(e.target.value)
+   }
+
+   const [btnText, setBtnText] = useState("Create content")
+
+   const onClick = () => {
+      if (name.trim() == "" || des.trim() == "") {
+         toast.error("Please Fill in items")
+      } else if (des.length < 30) {
+         toast.error("Description must be more than 30 letters")
+      } else {
+         generateIdea()
+      }
+   }
+
+   const generateIdea = async() => {
+
+      setBtnText("Loading...")
+      const response = await axios.post(BASE_URL + '/api/blogs/ideas', {
+         "name": name,
+         "des": des,
+         "tone": tone,
+         "lang": lang
       })
+      setBtnText("Create Content")
+      props.handleIdea(response.data.completion_text)
    }
 
    return (
       <Card>
-         <CardHeader title='Blog ideas' />
+         <CardHeader title='Blog ideas'/>
          <Divider className='mb-3'></Divider>
          <CardContent>
             <form onSubmit={e => e.preventDefault()}>
@@ -67,10 +81,9 @@ const BlogIdeasForm = () => {
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         Product/Brand Name (Optional)
                      </Typography>
                      <TextField
@@ -78,17 +91,16 @@ const BlogIdeasForm = () => {
                         label=''
                         placeholder=''
                         InputLabelProps={{
-                           shrink: true
-                        }}
-                     />
+                        shrink: true
+                     }}
+                        onChange={onNameChange}/>
                   </Grid>
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         Describe your product
                      </Typography>
                      <TextField
@@ -98,17 +110,16 @@ const BlogIdeasForm = () => {
                         label=''
                         placeholder=''
                         InputLabelProps={{
-                           shrink: true
-                        }}
-                     />
+                        shrink: true
+                     }}
+                        onChange={onDesChange}/>
                   </Grid>
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         Tone
                      </Typography>
                      <FormControl fullWidth>
@@ -116,7 +127,7 @@ const BlogIdeasForm = () => {
                            defaultValue='Friendly'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
-                        >
+                           onChange={onToneChange}>
                            <MenuItem value={'Friendly'}>Friendly</MenuItem>
                            <MenuItem value={'Luxury'}>Luxury</MenuItem>
                            <MenuItem value={'Relaxed'}>Relaxed</MenuItem>
@@ -126,10 +137,9 @@ const BlogIdeasForm = () => {
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         Language
                      </Typography>
                      <FormControl fullWidth>
@@ -138,7 +148,7 @@ const BlogIdeasForm = () => {
                            defaultValue='english'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
-                        >
+                           onChange={onLangChange}>
                            <MenuItem value={'english'}>English</MenuItem>
                            <MenuItem value={'spanish'}>Spanish</MenuItem>
                         </Select>
@@ -147,15 +157,19 @@ const BlogIdeasForm = () => {
                   <Grid item xs={12}>
                      <Box
                         sx={{
-                           gap: 5,
-                           display: 'flex',
-                           flexWrap: 'wrap',
-                           alignItems: 'center',
-                           justifyContent: 'space-between'
-                        }}
-                     >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Create content
+                        gap: 5,
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                     }}>
+                        <Button
+                           type='submit'
+                           fullWidth
+                           variant='contained'
+                           size='large'
+                           onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>

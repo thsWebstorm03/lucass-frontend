@@ -66,7 +66,7 @@ const AppBarContent = props => {
               fontSize: '1.375rem !important'
             }}
           >
-            <img src={PUBLIC_URL + '/images/logos/seeds-logo.png'} alt='logo' />
+            <img src={PUBLIC_URL + '/images/lucass-logo.png'} alt='logo' width={200}/>
           </Typography>
         </LinkStyled>
       )}
