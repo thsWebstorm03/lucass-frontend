@@ -39,14 +39,6 @@ const navigation = () => {
         {
           title: 'Keyword generator',
           path: '/tools/blog-tools/keyword-generator'
-        },
-        {
-          title: 'Test Adir',
-          path: '/tools/blog-tools/test-adir'
-        },
-        {
-          title: 'Full article writing',
-          path: '/tools/blog-tools/full-article-writing'
         }
       ]
     },
