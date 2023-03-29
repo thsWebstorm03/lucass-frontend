@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Grid from '@mui/material/Grid'
 
 import CardSnippet from 'src/@core/components/card-snippet'
@@ -10,25 +10,33 @@ import * as source from 'src/views/forms/form-elements/editor/EditorSourceCode'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 const AdCopyVariants = props => {
-  return (
-    <Grid container spacing={6}>
-      <Grid item xs={6} sm={24} md={6}>
-        <AdCopyVariantsForm />
+
+   const [variants, setVariants] = useState("")
+
+   const handleAdVariants = (text) => {
+      setVariants(text)
+   }
+
+   return (
+      <Grid container spacing={6}>
+         <Grid item xs={6} sm={24} md={6}>
+            <AdCopyVariantsForm handleVariants = {handleAdVariants}/>
+         </Grid>
+         <Grid item xs={6} sm={24} md={6}>
+            <CardSnippet
+               sx={{
+               overflow: 'visible'
+            }}
+               title='Playground'
+               code={{
+               tsx: null,
+               jsx: source.EditorControlledJSXCode
+            }}>
+               <PlaygroundEditor data={variants}/>
+            </CardSnippet>
+         </Grid>
       </Grid>
-      <Grid item xs={6} sm={24} md={6}>
-        <CardSnippet
-          sx={{ overflow: 'visible' }}
-          title='Playground'
-          code={{
-            tsx: null,
-            jsx: source.EditorControlledJSXCode
-          }}
-        >
-          <PlaygroundEditor />
-        </CardSnippet>
-      </Grid>
-    </Grid>
-  )
+   )
 }
 
 export default AdCopyVariants

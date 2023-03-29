@@ -1,10 +1,7 @@
-// ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
-
-// ** MUI Imports
+import toast from 'react-hot-toast'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -22,39 +19,56 @@ import { Divider } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import {BASE_URL} from 'src/configs'
 
-const ProductDescriptionForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
+const ProductDescriptionForm = (props) => {
+   
+   const [product, setName] = useState("")
+   const [des, setDes] = useState("")
+   const [tone, setTone] = useState("Friendly")
+   const [lang, setLang] = useState("English")
 
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
+   const onProductChange = (e) => {
+      setName(e.target.value)
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
+   const onDesChange = (e) => {
+      setDes(e.target.value)
    }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
+   const onToneChange = (e) => {
+      setTone(e.target.value)
    }
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
+   const onLangChange = (e) => {
+      setLang(e.target.value)
+   }
+
+   const [btnText, setBtnText] = useState("Create content")
+
+   const onClick = () => {
+      if (product.trim() == "" || des.trim() == "") {
+         toast.error("Please Fill in items")
+      } else if (des.length < 30) {
+         toast.error("Description must be more than 30 letters")
+      } else {
+         generateProduct()
+      }
+   }
+
+   const generateProduct = async () => {
+
+      setBtnText("Loading...");
+      
+      const response = await axios.post(BASE_URL + '/api/ecom/product', {
+         "product": product,
+         "des": des,
+         "tone": tone,
+         "lang": lang
       })
+      setBtnText("Create Content");
+      props.handleProduct(response.data.completion_text);
    }
 
    return (
@@ -82,6 +96,7 @@ const ProductDescriptionForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onDesChange}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -101,6 +116,7 @@ const ProductDescriptionForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onProductChange}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -117,6 +133,7 @@ const ProductDescriptionForm = () => {
                            defaultValue='Friendly'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onToneChange}
                         >
                            <MenuItem value={'Friendly'}>Friendly</MenuItem>
                            <MenuItem value={'Luxury'}>Luxury</MenuItem>
@@ -139,6 +156,7 @@ const ProductDescriptionForm = () => {
                            defaultValue='english'
                            id='demo-simple-select-outlined'
                            labelId='demo-simple-select-outlined-label'
+                           onChange={onLangChange}
                         >
                            <MenuItem value={'english'}>English</MenuItem>
                            <MenuItem value={'spanish'}>Spanish</MenuItem>
@@ -155,8 +173,8 @@ const ProductDescriptionForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Create content
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>
