@@ -24,12 +24,13 @@ class CustomDocument extends Document {
           />
           <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
           <link rel='shortcut icon' href='/images/favicon1.png' />
+          
         </Head>
         <body>
           <Main />
-          <script src={`${PUBLIC_URL}` + 'js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'} async ></script>
-          <script src={`${PUBLIC_URL}` + 'js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'} async></script>
-          <script src={`${PUBLIC_URL}` + 'js/theme.min.js'} async></script>
+          <script src={'/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'}  ></script>
+          <script src={'/js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'}></script>
+          <script src={'/js/theme.min.js'}></script>
           <NextScript />
         </body>
       </Html>

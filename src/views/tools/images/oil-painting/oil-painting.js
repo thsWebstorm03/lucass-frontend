@@ -1,10 +1,7 @@
-// ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
-
-// ** MUI Imports
+import toast from 'react-hot-toast'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -22,39 +19,37 @@ import { Divider } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import {BASE_URL} from 'src/configs'
 
-const OilPaintingForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+const OilPaintingForm = (props) => {
+   
+   const [des, setDes] = useState("")
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
-
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
+   const onDesChange = (e) => {
+      setDes(e.target.value)
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
+   const [btnText, setBtnText] = useState("Create content")
+
+   const onClick = () => {
+      if (des.trim() == "") {
+         toast.error("Please Fill in items")
+      } else if (des.length < 30) {
+         toast.error("Description must be more than 30 letters")
+      } else {
+         generateOilPaint()
+      }
    }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
-   }
+   const generateOilPaint = async () => {
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
+      setBtnText("Loading...");
+      
+      const response = await axios.post(BASE_URL + '/api/image/oilPaint', {
+         "des": des,
       })
+      setBtnText("Create Content");
+      props.handlePaint(response.data.source);
    }
 
    return (
@@ -64,7 +59,6 @@ const OilPaintingForm = () => {
          <CardContent>
             <form onSubmit={e => e.preventDefault()}>
                <Grid container spacing={5}>
-                  
                   <Grid item xs={12}>
                      <Typography
                         sx={{
@@ -83,6 +77,7 @@ const OilPaintingForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={onDesChange}
                      />
                   </Grid>
                   
@@ -96,8 +91,8 @@ const OilPaintingForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Create content
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>
