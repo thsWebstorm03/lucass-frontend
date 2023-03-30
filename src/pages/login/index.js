@@ -835,7 +835,7 @@ const LoginPage = () => {
                         <li className='nav-item fs-sm mb-0'>
                            <Link
                               className='nav-link active'
-                              href='#signin'
+                              href='#signIn'
                               data-bs-toggle='tab'
                               role='tab'
                               aria-selected='true'>
@@ -863,7 +863,7 @@ const LoginPage = () => {
                   </div>
 
                   <div className='modal-body tab-content py-4'>
-                     <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+                     <form className='tab-pane fade active show' id="signIn" noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
                         <FormControl
                            fullWidth
                            sx={{
