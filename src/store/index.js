@@ -10,6 +10,8 @@ import calendar from 'src/store/apps/calendar'
 import permissions from 'src/store/apps/permissions'
 
 import blogTools from 'src/store/apps/blog-tools'
+import history from 'src/store/apps/history'
+import plan from 'src/store/apps/plan'
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +22,9 @@ export const store = configureStore({
     calendar,
     permissions,
     
-    blogTools
+    blogTools,
+    history,
+    plan
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,10 +1,7 @@
-// ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
-
-// ** MUI Imports
+import toast from 'react-hot-toast'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -21,72 +18,78 @@ import MenuItem from '@mui/material/MenuItem'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import {BASE_URL} from 'src/configs'
 
 const ChangePasswordForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+   
+   const [values, setValues] = useState({newPass:'', confirm:'' });
+   const [btnText, setBtnText] = useState("Save");
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
-
-   const handleChange = prop => event => {
+   const handleChange = (event, key) => {
+      console.log(key,'p')
       setValues({
          ...values,
-         [prop]: event.target.value
+         [key]: event.target.value
       })
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
-   }
+   const onClick = async () => {
+   
+      if(confirm("Do you really update your profile?")){
+         if(values.newPass == values.confirm){
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
-   }
+            try {
+               setBtnText("Updating...");
+            
+               const response = await axios.post(BASE_URL + '/api/profile/updatePassword', {
+                  newPass : values.newPass
+               })
+               
+               setBtnText("Save");
+            } catch (error) {
+               toast.error("Communication error occured")
+               setBtnText("Save");
+            }
+         }
+         else{
+            toast.error("No match confirm password")
+         }
+         
+      }
 
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
-      })
    }
 
    return (
       <Card>
-         <CardHeader title='Change Password' />
+         <CardHeader title='Change Password'/>
          <CardContent>
             <form onSubmit={e => e.preventDefault()}>
                <Grid container spacing={5}>
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         New Password
                      </Typography>
                      <TextField
                         fullWidth
                         label=''
                         placeholder=''
+                        type='password'
                         InputLabelProps={{
-                           shrink: true
+                        shrink: true
                         }}
+                        onChange={(e)=>handleChange(e, 'newPass')}
                      />
                   </Grid>
                   <Grid item xs={12}>
                      <Typography
                         sx={{
-                           mb: 2,
-                           fontWeight: 500
-                        }}
-                     >
+                        mb: 2,
+                        fontWeight: 500
+                     }}>
                         Repeate New Password
                      </Typography>
                      <TextField
@@ -94,22 +97,23 @@ const ChangePasswordForm = () => {
                         label=''
                         placeholder=''
                         InputLabelProps={{
-                           shrink: true
+                        shrink: true
                         }}
+                        type='password'
+                        onChange={(e)=>handleChange(e, 'confirm')}
                      />
                   </Grid>
                   <Grid item xs={12}>
                      <Box
                         sx={{
-                           gap: 5,
-                           display: 'flex',
-                           flexWrap: 'wrap',
-                           alignItems: 'center',
-                           justifyContent: 'space-between'
-                        }}
-                     >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Save
+                        gap: 5,
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                     }}>
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>

@@ -5,27 +5,27 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
+import Link from 'next/link'
 
-const CardInfluencer = () => {
-  return (
-    <Card>
-      <CardHeader title='Influencing The Influencer' />
-      <CardContent>
-        <Typography variant='body2' sx={{ mb: 3.25 }}>
-          Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
-          front of their desktops, while delivery people scan bar codes with handhelds and workers in the field stay in
-          touch.
-        </Typography>
-        <Typography variant='body2'>
-          If you’re in the market for new desktops, notebooks, or PDAs, there are a myriad of choices. Here’s a rundown
-          of some of the best systems available.
-        </Typography>
-      </CardContent>
-      <CardActions className='card-action-dense'>
-        <Button>Read More</Button>
-      </CardActions>
-    </Card>
-  )
+const CardInfluencer = (props) => {
+   const {section, title, description, path} = props;
+   
+   return (
+      <Card sx={{p:2}} style={{minHeight : "260px"}}>
+         <CardHeader title={title} subheader={section}/>
+         <CardContent>
+            <Typography variant='body2' fontSize={16} sx={{
+               mb: 2
+            }}>
+               {description}
+            </Typography>
+            
+         </CardContent>
+         <CardActions className='card-action-dense'>
+            <Link href={path} className='ps-2'>Try now</Link>
+         </CardActions>
+      </Card>
+   )
 }
 
 export default CardInfluencer

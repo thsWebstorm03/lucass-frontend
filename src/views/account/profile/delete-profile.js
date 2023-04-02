@@ -23,37 +23,27 @@ import MenuItem from '@mui/material/MenuItem'
 import Icon from 'src/@core/components/icon'
 
 const DeleteAccountForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+   
+   const [btnText, setBtnText] = useState("Delete");
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
+   const onClick = async () => {
 
-   const handleChange = prop => event => {
-      setValues({
-         ...values,
-         [prop]: event.target.value
-      })
-   }
+      if(confirm("Do you really update your profile?")){
+         try {
+            setBtnText("Updating...");
+         
+            const response = await axios.post(BASE_URL + '/api/profile/deleteAccount', {
+               ...values
+            })
+            
+            setBtnText("Delete");
+         } catch (error) {
+            toast.error("Communication error occured")
+            setBtnText("Delete");
+         }
+         
+      }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
-   }
-
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
-   }
-
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
-      })
    }
 
    return (
@@ -72,8 +62,8 @@ const DeleteAccountForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Delete
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>

@@ -33,14 +33,12 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)
+      console.log(storedToken, 'storedToken')
+      axios.defaults.headers.common['Authorization'] = storedToken;
       if (storedToken) {
         setLoading(true)
         await axios
-          .get(BASE_URL+authConfig.meEndpoint, {
-            headers: {
-              Authorization: storedToken
-            }
-          })
+          .get(BASE_URL+authConfig.meEndpoint)
           .then(async response => {
             setLoading(false)
             setUser({ ...response.data })
@@ -49,6 +47,7 @@ const AuthProvider = ({ children }) => {
             localStorage.removeItem('userData')
             localStorage.removeItem('refreshToken')
             localStorage.removeItem('accessToken')
+            axios.defaults.headers.common['Authorization'] = null;
             setUser(null)
             setLoading(false)
             if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {

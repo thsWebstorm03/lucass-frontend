@@ -4,22 +4,23 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 // ** Axios Imports
 import axios from 'axios'
 
-// ** Fetch User Profile
-export const getBlogIdeas = createAsyncThunk('blogIdeas/getBlogIdeas', async() => {
-   const response = await axios.post('/api/blog/ideas', {
-      "name": "123",
-      "des": "Please tell me how to make perfume.",
-      "tone": "Friendly",
-      "lang": "English"
-   })
+// ** Fetch Blog ideas
+export const getBlogIdeas = createAsyncThunk('blogIdeas/getBlogIdeas', () => {
+   // const response = await axios.post('/api/blog/ideas', {
+   //    "name": "123",
+   //    "des": "Please tell me how to make perfume.",
+   //    "tone": "Friendly",
+   //    "lang": "English"
+   // })
 
-   return response.data
+   // return response.data
+   return "World!"
 })
 
 export const blogIdeasSlice = createSlice({
    name: 'blogIdeas',
    initialState: {
-      blogIdeaData: ""
+      blogIdeaData: "Hello."
    },
    reducers: {
       removeIdeas: (state, action) => {
@@ -28,6 +29,7 @@ export const blogIdeasSlice = createSlice({
    },
    extraReducers: builder => {
       builder.addCase(getBlogIdeas.fulfilled, (state, action) => {
+         console.log("adfasdfasdf")
         state.blogIdeaData = action.payload
       })
     }

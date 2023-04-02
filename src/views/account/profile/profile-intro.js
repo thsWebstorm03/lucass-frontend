@@ -1,10 +1,7 @@
-// ** React Imports
-import { useState } from 'react'
+import {useState, createContext} from 'react'
+import axios from 'axios'
 
-// ** Next Import
-import Link from 'next/link'
-
-// ** MUI Imports
+import toast from 'react-hot-toast'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grid from '@mui/material/Grid'
@@ -21,39 +18,39 @@ import MenuItem from '@mui/material/MenuItem'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import {BASE_URL} from 'src/configs'
 
-const ProfileIntroForm = () => {
-   // ** States
-   const [values, setValues] = useState({ password: '', showPassword: false })
+const ProfileIntroForm = (props) => {
+   
+   const [values, setValues] = useState({name:'', email:'' })
+   const [btnText, setBtnText] = useState("Save")
 
-   const [confirmPassValues, setConfirmPassValues] = useState({ password: '', showPassword: false })
-
-   const handleChange = prop => event => {
+   const handleChange = (event, key) => {
+      console.log(key,'p')
       setValues({
          ...values,
-         [prop]: event.target.value
+         [key]: event.target.value
       })
    }
 
-   const handleConfirmPassChange = prop => event => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         [prop]: event.target.value
-      })
-   }
+   const onClick = async () => {
+   
+      if(confirm("Do you really update your profile?")){
+         try {
+            setBtnText("Updating...");
+         
+            const response = await axios.post(BASE_URL + '/api/profile/updateProfile', {
+               ...values
+            })
+            
+            setBtnText("Save");
+         } catch (error) {
+            toast.error("Communication error occured")
+            setBtnText("Save");
+         }
+         
+      }
 
-   const handleClickShowPassword = () => {
-      setValues({
-         ...values,
-         showPassword: !values.showPassword
-      })
-   }
-
-   const handleClickConfirmPassShow = () => {
-      setConfirmPassValues({
-         ...confirmPassValues,
-         showPassword: !confirmPassValues.showPassword
-      })
    }
 
    return (
@@ -78,6 +75,7 @@ const ProfileIntroForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        onChange={(e)=>handleChange(e, 'name')}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -96,6 +94,8 @@ const ProfileIntroForm = () => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        name='email'
+                        onChange={(e)=>handleChange(e, 'email')}
                      />
                   </Grid>
                   <Grid item xs={12}>
@@ -108,8 +108,8 @@ const ProfileIntroForm = () => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <Button type='submit' fullWidth variant='contained' size='large'>
-                           Save
+                        <Button type='submit' fullWidth variant='contained' size='large' onClick={onClick}>
+                           {btnText}
                         </Button>
                      </Box>
                   </Grid>

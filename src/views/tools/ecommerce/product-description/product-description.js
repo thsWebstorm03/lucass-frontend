@@ -1,4 +1,5 @@
-import {useState, createContext} from 'react'
+import React, { useEffect, useState, createContext} from 'react'
+import { useRouter } from 'next/router'
 import axios from 'axios'
 
 import toast from 'react-hot-toast'
@@ -23,14 +24,16 @@ import {BASE_URL} from 'src/configs'
 
 
 const ProductDescriptionForm = (props) => {
+
+   const router = useRouter();
    
-   const [product, setName] = useState("")
+   const [product, setProduct] = useState("")
    const [des, setDes] = useState("")
    const [tone, setTone] = useState("Friendly")
    const [lang, setLang] = useState("English")
 
    const onProductChange = (e) => {
-      setName(e.target.value)
+      setProduct(e.target.value)
    }
 
    const onDesChange = (e) => {
@@ -71,6 +74,24 @@ const ProductDescriptionForm = (props) => {
       props.handleProduct(response.data.completion_text);
    }
 
+   useEffect(() =>{
+      console.log(router.query, 'query111')
+
+      if(router.query){
+         axios
+            .get(BASE_URL+'/api/prompts/getlogbyId', {params : {pId : router.query.pId}})
+            .then(result => {
+               console.log(result.data.logs)
+               let log = result.data.logs;
+               console.log(log.answerlist[0],'ans')
+               setDes(log.answerlist[0])
+               setProduct(log.answerlist[1])
+            })
+            .catch(err => console.log(err))
+      }
+
+   }, [])
+
    return (
       <Card>
          <CardHeader title='Product description' />
@@ -96,6 +117,7 @@ const ProductDescriptionForm = (props) => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        value={des}
                         onChange={onDesChange}
                      />
                   </Grid>
@@ -116,6 +138,7 @@ const ProductDescriptionForm = (props) => {
                         InputLabelProps={{
                            shrink: true
                         }}
+                        value={product}
                         onChange={onProductChange}
                      />
                   </Grid>

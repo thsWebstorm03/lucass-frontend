@@ -1,35 +1,32 @@
-import React from 'react'
+import React, {useState, createContext, useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getPromptLogs } from 'src/store/apps/history'
+
+import toast from 'react-hot-toast'
+import CardInfulencer from 'src/views/history/cardInfulencer'
 import Grid from '@mui/material/Grid'
 
-import CardInfluencer from 'src/views/history/cardInfulencer'
+import isEmpty from 'src/helper/is-empty'
 
 const History = props => {
-   const data = [
-      {
-         key: 1,
-         title: 'Product description',
-         subtitle: '2023-03-22'
-      }, {
-         key: 2,
-         title: 'Instagram captions',
-         subtitle: '2023-03-21'
-      }, {
-         key: 3,
-         title: 'Full article writing',
-         subtitle: '2023-03-21'
-      }, {
-         key: 4,
-         title: 'Blog ideas',
-         subtitle: '2023-03-21'
-      }
-   ]
+   
+   const dispatch = useDispatch();
 
-   return (<Grid container spacing={6}>
-         {data.map(item => {
-            return <Grid key={item.key} item xs={24} sm={24} md={24}>
-                        <CardInfluencer {...item}/>
-                  </Grid>
-            })
+   const {promptlogs} = useSelector(state => state.history);
+
+   useEffect(() => {
+      dispatch(getPromptLogs())
+   },[])
+
+
+   return (
+      <Grid container spacing={6}>
+         {
+            !isEmpty(promptlogs) && promptlogs.map((data, index) => (
+               <Grid key={data.title} item xs={24} sm={24} md={24}>
+                  <CardInfulencer {...data}/>
+               </Grid>
+            ))
          }
       </Grid>
    )

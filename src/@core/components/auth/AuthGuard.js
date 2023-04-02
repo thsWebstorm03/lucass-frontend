@@ -31,7 +31,7 @@ const AuthGuard = props => {
          if (router.pathname.indexOf('login') != -1) {
             router.replace({pathname: '/dashboards/library'})
          } else {
-            router.replace({pathname: router.pathname})
+            router.replace({pathname: router.pathname,query : router.query})
          }
       }
    }, [router.route])
