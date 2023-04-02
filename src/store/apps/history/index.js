@@ -7,7 +7,8 @@ import axios from 'axios'
 
 export const getPromptLogs = createAsyncThunk('history/getPromptLogs', async () => {
 
-   const response = await axios.get(BASE_URL + '/api/prompts/getlogs')
+   const response = await axios.get(BASE_URL + '/api/prompts/getlogs');
+   
    return response.data.logs
 
 })

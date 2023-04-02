@@ -6,8 +6,10 @@ import {BASE_URL} from 'src/configs'
 import axios from 'axios'
 
 export const getPlans = createAsyncThunk('plan/getPlans', async () => {
-   const response = await axios.get(BASE_URL + '/api/plans/getall')
-   return response.data.plans
+
+   const response = await axios.get(BASE_URL + '/api/plans/getall');
+
+   return response.data.plans;
 
 })
 
