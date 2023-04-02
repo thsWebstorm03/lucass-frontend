@@ -31,6 +31,7 @@ class CustomDocument extends Document {
           <script src={'/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'}  ></script>
           <script src={'/js/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'}></script>
           <script src={'/js/theme.min.js'}></script>
+          <script src="https://www.paypal.com/sdk/js?client-id=AUHkTqVkcD3Q6k1dVQheH_aDaiuSkyWV5bnEU6TRmtZqeKOBcsFAfVqqzrQ_Y7TQ_3HbQlVbbq-GmmGN&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
           <NextScript />
         </body>
       </Html>
