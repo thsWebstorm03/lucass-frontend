@@ -84,6 +84,7 @@ const styles = css`
       margin-left: 10px;
    }
 `
+
 const customStyles = {
    content : {
      top                   : '50%',

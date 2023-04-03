@@ -17,9 +17,12 @@ export const deletelog = createAsyncThunk('history/deletelog', async (id, {dispa
 
    const response = await axios.post(BASE_URL + '/api/prompts/deletelog',{id});
    
-   if(response.data.msg == "success")
-      await dispatch(getPromptLogs())
+   if(response.data.msg == "success"){
+
+      await dispatch(getPromptLogs());
+
       return response.data.logs
+   }
 
 })
 
