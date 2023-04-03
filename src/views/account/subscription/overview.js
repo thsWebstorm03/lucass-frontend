@@ -192,7 +192,7 @@ const Overview = (props) => {
                <CardContent>
                   <Divider className='mb-3'></Divider>
                   <Grid container spacing={5}>
-                     <Grid item xs={10} className='mb-5'>
+                     <Grid item xs={6} className='mb-5'>
                         <Typography
                            sx={{
                            mb: 2,
@@ -209,7 +209,7 @@ const Overview = (props) => {
                         </Typography>
 
                      </Grid>
-                     <Grid item xs={2}>
+                     <Grid item xs={6}>
                         <Button type='button' variant='contained' size='large'>
                            Update plan
                         </Button>
@@ -328,7 +328,7 @@ const Overview = (props) => {
                      {!isEmpty(plans) && plans.map(data => {
                         if (!checked) {
                            return (
-                              <Grid key={data._id} item xs={4}>
+                              <Grid xs={12} sm={12} md={4} key={data._id} item>
                                  <Card>
                                     <CardContent className='text-center p-5'>
                                        <p>
@@ -372,7 +372,7 @@ const Overview = (props) => {
                            )
                         } else {
                            return (
-                              <Grid key={data._id} item xs={4}>
+                              <Grid xs={12} sm={12} md={4} key={data._id} item>
                                  <Card>
                                     <CardContent className='text-center p-5'>
                                        <p>

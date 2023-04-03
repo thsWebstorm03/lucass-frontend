@@ -19,10 +19,10 @@ const WaterColor = props => {
 
    return (
       <Grid container spacing={6}>
-         <Grid item xs={6} sm={24} md={6}>
+         <Grid item xs={12} sm={12} md={6}>
             <WaterColorForm handleWater={handleWaterColor}/>
          </Grid>
-         <Grid item xs={6} sm={24} md={6}>
+         <Grid item xs={12} sm={12} md={6}>
             <CardSnippet
                sx={{
                overflow: 'visible'

@@ -122,7 +122,13 @@ const AppBarContent = props => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
         {hidden && !settings.navHidden ? <img src={PUBLIC_URL + '/images/lucass-logo.png'} alt='logo' width={"200px"}/> : null}
+        
         {/* <Autocomplete hidden={hidden} settings={settings} /> */}
+        {hidden && !settings.navHidden ? (
+          <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
+            <Icon fontSize='1.5rem' icon='tabler:menu-2' />
+          </IconButton>
+        ) : null}
         <TextField
           id='icons-start-adornment'
           size='small'

@@ -14,13 +14,13 @@ const Profile = props => {
    return (
       <div className='container'>
          <Grid container spacing={6}>
-            <Grid item sm={12} md={12} lg={6} xl={6} xxl={6}>
+            <Grid item xs={12} sm={12} md={12} lg={6} >
                <ProfileIntroForm/>
             </Grid>
-            <Grid item sm={12} md={12} lg={6} xl={6} xxl={6}>
+            <Grid item xs={12} sm={12} md={12} lg={6} >
                <ChangePasswordForm/>
             </Grid>
-            <Grid item sm={12} md={12} lg={6} xl={6} xxl={6}>
+            <Grid item xs={12} sm={12} md={12} lg={6} >
                <DeleteAccountForm/>
             </Grid>
          </Grid>

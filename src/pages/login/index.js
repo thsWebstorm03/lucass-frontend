@@ -45,6 +45,7 @@ import themeConfig from 'src/configs/themeConfig'
 
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 import { Grid } from '@mui/material'
+import Modal from 'react-modal';
 
 import { useCallback } from "react";
 import Particles from "react-particles";
@@ -83,6 +84,23 @@ const styles = css`
       margin-left: 10px;
    }
 `
+const customStyles = {
+   content : {
+     top                   : '50%',
+     left                  : '50%',
+     right                 : 'auto',
+     bottom                : 'auto',
+     marginRight           : '-50%',
+     transform             : 'translate(-50%, -50%)',
+     borderRadius : "20px",
+     width : "500px",
+     position : "relative"
+   },
+   overlay : {
+      zIndex : "99999",
+      backgroundColor : "rgba(0,0,0, 0.5)"
+   }
+ };
 
 const LoginPage = () => {
    const [rememberMe, setRememberMe] = useState(true)
@@ -91,8 +109,6 @@ const LoginPage = () => {
    const [fixed, setFixed] = useState('')
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
-   const [show, setShow] = useState('')
-
    
    const auth = useAuth()
    const theme = useTheme()
@@ -144,6 +160,20 @@ const LoginPage = () => {
    const particlesLoaded = useCallback(async container => {
          await console.log(container);
    }, []);
+
+   const [show, setShow] = useState(false);
+
+   const onChecked = (e) => {
+      setChecked(e.target.checked)
+   }
+
+   const openModal = (e) => {
+      setShow(true);
+   }
+
+   const closeModal = () => {
+      setShow(false);
+   }
 
    useEffect(() => {
       if (typeof window != undefined) {
@@ -435,8 +465,7 @@ const LoginPage = () => {
                   <button
                      type='button'
                      className='btn btn-primary ml-10'
-                     data-bs-toggle='modal'
-                     data-bs-target='#modalId'
+                     onClick={openModal}
                   >
                      Sign In
                   </button>
@@ -462,20 +491,22 @@ const LoginPage = () => {
                      </div>
                   </Grid>
                   <Grid item xs={12} md={7} lg={7} xl={5}>
-                        <div style={{zIndex : 2, transform: "translate3d(-10.6px, 10.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
-                           <img src='/images/layer011.png' height={"100%"} alt='layer' />
-                        </div>
-                     
+                     <div style={{zIndex : 2, transform: "translate3d(-10.6px, 10.2px, 0px)",transformStyle: "preserve-3d",backfaceVisibility: "hidden"}}>
+                        {  
+                           hidden ? 
+                              <img src='/images/layer011.png'  width={"100%"} alt='layer' />
+                           :
+                              <img src='/images/layer011.png'  height={"100%"} alt='layer' />
+                        }
+                     </div>
                   </Grid>
                </Grid>
-               <div style={{width : "100%", height:"calc(100vh - 80px)", overflow : "hidden", position:"absolute",left:"0", top:"80px", zIndex:"3", backgroundColor:"rgba(100,100,150,0)"}}>
-                  <Particles
-                     id="tsparticles"
-                     init={particlesInit}
-                     loaded={particlesLoaded}
-                     options={particle_options}
-                  />
-               </div>
+               <Particles
+                  id="tsparticles"
+                  init={particlesInit}
+                  loaded={particlesLoaded}
+                  options={particle_options}
+               />
             </div>
          </section>
          
@@ -827,297 +858,304 @@ const LoginPage = () => {
             <i className='btn-scroll-top-icon bx bx-chevron-up'></i>
          </Link>
 
-         <div className='modal fade' id='modalId' tabIndex={-1} role='dialog'>
-            <div className='modal-dialog modal-dialog-centered' role='document'>
-               <div className='modal-content'>
-                  <div className='modal-header'>
-                     <ul className='nav nav-tabs mb-0' role='tablist'>
-                        <li className='nav-item fs-sm mb-0'>
-                           <Link
-                              className='nav-link active'
-                              href='#signIn'
-                              data-bs-toggle='tab'
-                              role='tab'
-                              aria-selected='true'>
-                              <i className='bx bx-lock-open fs-base me-2'></i>
-                              Sign in
-                           </Link>
-                        </li>
-                        <li className='nav-item fs-sm mb-0'>
-                           <Link
-                              className='nav-link'
-                              href='#signup'
-                              data-bs-toggle='tab'
-                              role='tab'
-                              aria-selected='false'>
-                              <i className='bx bx-user fs-base me-2'></i>
-                              Sign up
-                           </Link>
-                        </li>
-                     </ul>
-                     <button
-                        className='btn-close'
-                        type='button'
-                        data-bs-dismiss='modal'
-                        aria-label='Close'></button>
-                  </div>
 
-                  <div className='modal-body tab-content py-4'>
-                     <form className='tab-pane fade active show' id="signIn" noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-                        <FormControl
-                           fullWidth
-                           sx={{
-                              mb: 4
-                           }}>
-                           <Controller
-                              name='email'
-                              control={control}
-                              rules={{
-                                 required: true
-                              }}
-                              render={({
-                                 field: {
-                                    value,
-                                    onChange,
-                                    onBlur
-                                 }
-                              }) => (<TextField
-                                 autoFocus
-                                 label='Email'
-                                 value={value}
-                                 onBlur={onBlur}
-                                 onChange={onChange}
-                                 error={Boolean(errors.email)}
-                                 placeholder='admin@vuexy.com' />)} />{' '} {errors.email && (
-                                    <FormHelperText
-                                       sx={{
-                                          color: 'error.main'
-                                       }}>
-                                       {errors.email.message}
-                                    </FormHelperText>
-                                 )}
-                        </FormControl>
-                        <FormControl
-                           fullWidth
-                           sx={{
-                              mb: 1.5
-                           }}>
-                           <InputLabel htmlFor='auth-login-v2-password' error={Boolean(errors.password)}>
-                              Password
-                           </InputLabel>
-                           <Controller
-                              name='password'
-                              control={control}
-                              rules={{
-                                 required: true
-                              }}
-                              render={({
-                                 field: {
-                                    value,
-                                    onChange,
-                                    onBlur
-                                 }
-                              }) => (
-                                 <OutlinedInput
-                                    value={value}
-                                    onBlur={onBlur}
-                                    label='Password'
-                                    onChange={onChange}
-                                    id='auth-login-v2-password'
-                                    error={Boolean(errors.password)}
-                                    type={showPassword
-                                       ? 'text'
-                                       : 'password'}
-                                    endAdornment={< InputAdornment position='end' > {
-                                       ' '
-                                    } < IconButton edge='end' onMouseDown={
-                                       e => e.preventDefault()
-                                    }
-                                       onClick={
-                                          () => setShowPassword(!showPassword)
-                                       } > {
-                                             ' '
-                                          } < Icon icon={
-                                             showPassword
-                                                ? 'tabler:eye'
-                                                : 'tabler:eye-off'
-                                          }
-                                             fontSize={
-                                                20
-                                             } /> {
-                                             ' '
-                                          } </IconButton>{' '} </InputAdornment >} />
-                              )} />{' '} {errors.password && (
-                                 <FormHelperText
-                                    sx={{
-                                       color: 'error.main'
-                                    }}
-                                    id=''>
-                                    {errors.password.message}
-                                 </FormHelperText>
-                              )}
-                        </FormControl>
-                        <Box
-                           sx={{
-                              mb: 1.75,
-                              display: 'flex',
-                              flexWrap: 'wrap',
-                              alignItems: 'center',
-                              justifyContent: 'space-between'
-                           }}>
-                           <FormControlLabel
-                              label='Remember Me'
-                              control={< Checkbox checked={
-                                 rememberMe
-                              }
-                                 onChange={
-                                    e => setRememberMe(e.target.checked)
-                                 } />} />
-                           <LinkStyled href='/forgot-password'>Forgot Password?</LinkStyled>
-                        </Box>
-                        <LoadingButton
-                           fullWidth
-                           size='large'
-                           type='submit'
-                           variant='contained'
-                           sx={{
-                              mb: 4
-                           }}
-                           loading={isLoading}
-                        >
-                           Login
-                        </LoadingButton>
-                        <Box
-                           sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              flexWrap: 'wrap',
-                              justifyContent: 'center'
-                           }}>
-                           <Typography
-                              sx={{
-                                 color: 'text.secondary',
-                                 mr: 2
-                              }}>
-                              New on our platform?
-                           </Typography>
-                           <Typography variant='body2'>
-                              <LinkStyled
-                                 href='/register'
-                                 sx={{
-                                    fontSize: '1rem'
-                                 }}>
-                                 Create an account
-                              </LinkStyled>
-                           </Typography>
-                        </Box>
-                        <Divider
-                           sx={{
-                              fontSize: '0.875rem',
-                              color: 'text.disabled',
-                              '& .MuiDivider-wrapper': {
-                                 px: 6
-                              },
-                              my: theme => `${theme.spacing(6)} !important`
-                           }}>
-                           or
-                        </Divider>
-                        <Box
-                           sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                           }}>
-                           <IconButton
-                              href='/'
-                              component={Link}
-                              sx={{
-                                 color: '#497ce2'
-                              }}
-                              onClick={e => e.preventDefault()}>
-                              <Icon icon='mdi:facebook' />
-                           </IconButton>
-                           <IconButton
-                              href='/'
-                              component={Link}
-                              sx={{
-                                 color: '#1da1f2'
-                              }}
-                              onClick={e => e.preventDefault()}>
-                              <Icon icon='mdi:twitter' />
-                           </IconButton>
-                           <IconButton
-                              href='/'
-                              component={Link}
-                              onClick={e => e.preventDefault()}
-                              sx={{
-                                 color: theme => (theme.palette.mode === 'light'
-                                    ? '#272727'
-                                    : 'grey.300')
-                              }}>
-                              <Icon icon='mdi:github' />
-                           </IconButton>
-                           <IconButton
-                              href='/'
-                              component={Link}
-                              sx={{
-                                 color: '#db4437'
-                              }}
-                              onClick={e => e.preventDefault()}>
-                              <Icon icon='mdi:google' />
-                           </IconButton>
-                        </Box>
-                     </form>
-
-                     <form className='tab-pane fade' autoComplete='off' id='signup'>
-                        <div className='mb-3'>
-                           <label className='form-label' htmlFor='name'>
-                              Full name
-                           </label>
-                           <input className='form-control' type='text' id='name' placeholder='John Doe' />
-                        </div>
-                        <div className='mb-3'>
-                           <label className='form-label' htmlFor='email2'>
-                              Email address
-                           </label>
-                           <input
-                              className='form-control'
-                              type='email'
-                              id='email2'
-                              placeholder='johndoe@example.com' />
-                        </div>
-                        <div className='mb-3'>
-                           <label className='form-label' htmlFor='pass2'>
-                              Password
-                           </label>
-                           <div className='password-toggle'>
-                              <input className='form-control' type='password' id='pass2' />
-                              <label className='password-toggle-btn'>
-                                 <input className='password-toggle-check' type='checkbox' />
-                                 <span className='password-toggle-indicator'></span>
-                              </label>
-                           </div>
-                        </div>
-                        <div className='mb-4'>
-                           <label className='form-label' htmlFor='pass3'>
-                              Confirm password
-                           </label>
-                           <div className='password-toggle'>
-                              <input className='form-control' type='password' id='pass3' />
-                              <label className='password-toggle-btn'>
-                                 <input className='password-toggle-check' type='checkbox' />
-                                 <span className='password-toggle-indicator'></span>
-                              </label>
-                           </div>
-                        </div>
-                        <button className='btn btn-primary d-block' type='submit'>
-                           Sign up
-                        </button>
-                     </form>
-                  </div>
-               </div>
+         <Modal
+            isOpen={show}
+            style={customStyles}
+            onRequestClose={closeModal}
+            contentLabel="Example Modal"
+            ariaHideApp={false}
+         >
+           
+            <div className='modal-header'>
+               <ul className='nav nav-tabs mb-0' role='tablist'>
+                  <li className='nav-item fs-sm mb-0'>
+                     <Link
+                        className='nav-link active'
+                        href='#signIn'
+                        data-bs-toggle='tab'
+                        role='tab'
+                        aria-selected='true'>
+                        <i className='bx bx-lock-open fs-base me-2'></i>
+                        Sign in
+                     </Link>
+                  </li>
+                  <li className='nav-item fs-sm mb-0'>
+                     <Link
+                        className='nav-link'
+                        href='#signup'
+                        data-bs-toggle='tab'
+                        role='tab'
+                        aria-selected='false'>
+                        <i className='bx bx-user fs-base me-2'></i>
+                        Sign up
+                     </Link>
+                  </li>
+               </ul>
+               <button
+                  className='btn-close'
+                  type='button'
+                  onClick={closeModal}
+               ></button>
             </div>
-         </div>
+
+            <div className='modal-body tab-content py-4'>
+               <form className='tab-pane fade active show' id="signIn" noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+                  <FormControl
+                     fullWidth
+                     sx={{
+                        mb: 4
+                     }}>
+                     <Controller
+                        name='email'
+                        control={control}
+                        rules={{
+                           required: true
+                        }}
+                        render={({
+                           field: {
+                              value,
+                              onChange,
+                              onBlur
+                           }
+                        }) => (<TextField
+                           autoFocus
+                           label='Email'
+                           value={value}
+                           onBlur={onBlur}
+                           onChange={onChange}
+                           error={Boolean(errors.email)}
+                           placeholder='admin@vuexy.com' />)} />{' '} {errors.email && (
+                              <FormHelperText
+                                 sx={{
+                                    color: 'error.main'
+                                 }}>
+                                 {errors.email.message}
+                              </FormHelperText>
+                           )}
+                  </FormControl>
+                  <FormControl
+                     fullWidth
+                     sx={{
+                        mb: 1.5
+                     }}>
+                     <InputLabel htmlFor='auth-login-v2-password' error={Boolean(errors.password)}>
+                        Password
+                     </InputLabel>
+                     <Controller
+                        name='password'
+                        control={control}
+                        rules={{
+                           required: true
+                        }}
+                        render={({
+                           field: {
+                              value,
+                              onChange,
+                              onBlur
+                           }
+                        }) => (
+                           <OutlinedInput
+                              value={value}
+                              onBlur={onBlur}
+                              label='Password'
+                              onChange={onChange}
+                              id='auth-login-v2-password'
+                              error={Boolean(errors.password)}
+                              type={showPassword
+                                 ? 'text'
+                                 : 'password'}
+                              endAdornment={< InputAdornment position='end' > {
+                                 ' '
+                              } < IconButton edge='end' onMouseDown={
+                                 e => e.preventDefault()
+                              }
+                                 onClick={
+                                    () => setShowPassword(!showPassword)
+                                 } > {
+                                       ' '
+                                    } < Icon icon={
+                                       showPassword
+                                          ? 'tabler:eye'
+                                          : 'tabler:eye-off'
+                                    }
+                                       fontSize={
+                                          20
+                                       } /> {
+                                       ' '
+                                    } </IconButton>{' '} </InputAdornment >} />
+                        )} />{' '} {errors.password && (
+                           <FormHelperText
+                              sx={{
+                                 color: 'error.main'
+                              }}
+                              id=''>
+                              {errors.password.message}
+                           </FormHelperText>
+                        )}
+                  </FormControl>
+                  <Box
+                     sx={{
+                        mb: 1.75,
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                     }}>
+                     <FormControlLabel
+                        label='Remember Me'
+                        control={< Checkbox checked={
+                           rememberMe
+                        }
+                           onChange={
+                              e => setRememberMe(e.target.checked)
+                           } />} />
+                     <LinkStyled href='/forgot-password'>Forgot Password?</LinkStyled>
+                  </Box>
+                  <LoadingButton
+                     fullWidth
+                     size='large'
+                     type='submit'
+                     variant='contained'
+                     sx={{
+                        mb: 4
+                     }}
+                     loading={isLoading}
+                  >
+                     Login
+                  </LoadingButton>
+                  <Box
+                     sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center'
+                     }}>
+                     <Typography
+                        sx={{
+                           color: 'text.secondary',
+                           mr: 2
+                        }}>
+                        New on our platform?
+                     </Typography>
+                     <Typography variant='body2'>
+                        <LinkStyled
+                           href='/register'
+                           sx={{
+                              fontSize: '1rem'
+                           }}>
+                           Create an account
+                        </LinkStyled>
+                     </Typography>
+                  </Box>
+                  <Divider
+                     sx={{
+                        fontSize: '0.875rem',
+                        color: 'text.disabled',
+                        '& .MuiDivider-wrapper': {
+                           px: 6
+                        },
+                        my: theme => `${theme.spacing(6)} !important`
+                     }}>
+                     or
+                  </Divider>
+                  <Box
+                     sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                     }}>
+                     <IconButton
+                        href='/'
+                        component={Link}
+                        sx={{
+                           color: '#497ce2'
+                        }}
+                        onClick={e => e.preventDefault()}>
+                        <Icon icon='mdi:facebook' />
+                     </IconButton>
+                     <IconButton
+                        href='/'
+                        component={Link}
+                        sx={{
+                           color: '#1da1f2'
+                        }}
+                        onClick={e => e.preventDefault()}>
+                        <Icon icon='mdi:twitter' />
+                     </IconButton>
+                     <IconButton
+                        href='/'
+                        component={Link}
+                        onClick={e => e.preventDefault()}
+                        sx={{
+                           color: theme => (theme.palette.mode === 'light'
+                              ? '#272727'
+                              : 'grey.300')
+                        }}>
+                        <Icon icon='mdi:github' />
+                     </IconButton>
+                     <IconButton
+                        href='/'
+                        component={Link}
+                        sx={{
+                           color: '#db4437'
+                        }}
+                        onClick={e => e.preventDefault()}>
+                        <Icon icon='mdi:google' />
+                     </IconButton>
+                  </Box>
+               </form>
+
+               <form className='tab-pane fade' autoComplete='off' id='signup'>
+                  <div className='mb-3'>
+                     <label className='form-label' htmlFor='name'>
+                        Full name
+                     </label>
+                     <input className='form-control' type='text' id='name' placeholder='John Doe' />
+                  </div>
+                  <div className='mb-3'>
+                     <label className='form-label' htmlFor='email2'>
+                        Email address
+                     </label>
+                     <input
+                        className='form-control'
+                        type='email'
+                        id='email2'
+                        placeholder='johndoe@example.com' />
+                  </div>
+                  <div className='mb-3'>
+                     <label className='form-label' htmlFor='pass2'>
+                        Password
+                     </label>
+                     <div className='password-toggle'>
+                        <input className='form-control' type='password' id='pass2' />
+                        <label className='password-toggle-btn'>
+                           <input className='password-toggle-check' type='checkbox' />
+                           <span className='password-toggle-indicator'></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div className='mb-4'>
+                     <label className='form-label' htmlFor='pass3'>
+                        Confirm password
+                     </label>
+                     <div className='password-toggle'>
+                        <input className='form-control' type='password' id='pass3' />
+                        <label className='password-toggle-btn'>
+                           <input className='password-toggle-check' type='checkbox' />
+                           <span className='password-toggle-indicator'></span>
+                        </label>
+                     </div>
+                  </div>
+                  <button className='btn btn-primary d-block' type='submit'>
+                     Sign up
+                  </button>
+               </form>
+            </div>
+         </Modal>
+
+
+         
          <footer className='footer border-top pt-3 pb-4 pb-lg-5 mt-5'>
             <div className='container pt-2 pt-md-4 pt-lg-5 pb-xl-3'>
                <div className='row d-flex justify-content-between'>

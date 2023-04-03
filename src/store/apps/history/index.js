@@ -13,6 +13,16 @@ export const getPromptLogs = createAsyncThunk('history/getPromptLogs', async () 
 
 })
 
+export const deletelog = createAsyncThunk('history/deletelog', async (id, {dispatch}) => {
+
+   const response = await axios.post(BASE_URL + '/api/prompts/deletelog',{id});
+   
+   if(response.data.msg == "success")
+      await dispatch(getPromptLogs())
+      return response.data.logs
+
+})
+
 export const historySlice = createSlice({
    name: 'history',
    initialState: {
