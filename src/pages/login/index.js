@@ -477,7 +477,14 @@ const LoginPage = () => {
             <div className='container'>
                <Grid container spacing={2}>
                   <Grid item xs={12} md={5} lg={5} xl={5}>
-                     <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Write Better, Write Faster with Lucass</p>
+                     {
+                        hidden
+                           ?
+                              <p className='animated shake text-pop-up-top' style={{fontSize : "45px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Write Better, Write Faster with Lucass</p>
+                           :
+                              <p className='animated shake text-pop-up-top' style={{fontSize : "60px", fontWeight:"bold", color:"#FFFFFF", marginTop:"120px"}}>Write Better, Write Faster with Lucass</p>
+                     }
+                     
                      <p style={{fontSize:"18px"}}>Unlock endless creativity and make your writing dreams a reality with our cutting-edge AI technology. Say goodbye to writer's block and hello to endless inspiration.</p>
                      <Button type='submit' variant='contained' size='large' className='mt-4'>
                         Get started for free
@@ -687,11 +694,11 @@ const LoginPage = () => {
                         </div>
                      </div>
                   </Grid>
-                  <Grid item xs={12} md={12} lg={6} xl={6} className='bg-white'>
+                  <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className='bg-white'>
                      <Carousel
                         cols={1}
                         rows={1}
-                        gap={30}
+                        gap={0}
                         loop
                         autoplay={2000}
                         showDots
@@ -708,7 +715,7 @@ const LoginPage = () => {
                            <div className='text-start' >
                               <Grid cols={1}>
                                  <Card>
-                                    <CardContent style={{ padding: "45px" }}>
+                                    <CardContent style={{ padding: "20px" }}>
                                        <button className='btn btn-primary p-2'>
                                           <i className='bx bxs-quote-alt-left fs-5'></i>
                                        </button>
@@ -844,7 +851,7 @@ const LoginPage = () => {
                      <p className='h1' style={{textAlign:"center", fontWeight:"bold", color:"#FFFFFF", marginTop:"60px"}}>One Tool — Endless Use Cases</p>
                      <p style={{textAlign:"center", fontSize: '20px', color:"#DDDDDD"}}>Organize your tasks with a 14-day free trial</p>
                      <ButtonGroup className='mb-2' variant="contained" aria-label="outlined primary button group">
-                        <TextField placeholder='Your Email' id="fullWidth" variant='outlined' style={{width : "300px", backgroundColor:"#FFFFFF"}}/>
+                        <TextField placeholder='Your Email' id="fullWidth" variant='outlined' style={{backgroundColor:"#FFFFFF"}}/>
                         <Button variant='contained'>Get started for free</Button>
                      </ButtonGroup>
                      <p style={{textAlign:"center", fontSize: '16px', color:"#DDDDDD"}}>No subscriptions. No annual fees. No lock-ins.</p>
@@ -1199,35 +1206,56 @@ const LoginPage = () => {
                   </div>
                   <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>E-Commerce</p>
-                     <ul className='list-unstyled'>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Blog tools</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>E-Commerce</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Social media tools</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Digital Ad copy</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Brainstorming tools</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Personal tools</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Images</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Video Script Generator</Link>
-                        </li>
-                        <li>
-                           <Link href="#" className='link-sm link-secondary1'>Writing Tools</Link>
-                        </li>
-                     </ul>
+                     {
+                        hidden 
+                           ?
+                              <ul className='list-unstyled'>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Blog tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>E-Commerce</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Social media tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>more...</Link>
+                                 </li>
+                              </ul>
+                           :
+                              <ul className='list-unstyled'>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Blog tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>E-Commerce</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Social media tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Digital Ad copy</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Brainstorming tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Personal tools</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Images</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Video Script Generator</Link>
+                                 </li>
+                                 <li>
+                                    <Link href="#" className='link-sm link-secondary1'>Writing Tools</Link>
+                                 </li>
+                              </ul>
+
+                     }
+                     
                   </div>
                   <div className='col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2'>
                      <p className='h5 pb-3'>Tools</p>

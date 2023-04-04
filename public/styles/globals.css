@@ -243,3 +243,14 @@ a {
   background-color: rgb(247, 250, 255);
 }
 
+
+
+
+
+.text-ellipse{
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
