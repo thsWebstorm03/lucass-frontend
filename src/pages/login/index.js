@@ -94,7 +94,7 @@ const customStyles = {
      marginRight           : '-50%',
      transform             : 'translate(-50%, -50%)',
      borderRadius : "20px",
-     width : "500px",
+     width : "400px",
      position : "relative"
    },
    overlay : {
@@ -115,8 +115,7 @@ const LoginPage = () => {
    const theme = useTheme()
    const bgColors = useBgColor()
    const { settings } = useSettings()
-   const hidden = useMediaQuery(theme.breakpoints.down('md'))
-
+   const hidden = useMediaQuery(theme => theme.breakpoints.down('md'))
    const { skin } = settings
 
    const { control, setError, handleSubmit, formState: {

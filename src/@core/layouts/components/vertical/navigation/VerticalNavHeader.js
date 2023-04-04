@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 
 // ** Custom Icon Import
 import Icon from 'src/@core/components/icon'
+import { useMediaQuery } from '@mui/material'
 
 // ** Configs
 import themeConfig from 'src/configs/themeConfig'
@@ -87,7 +88,8 @@ const VerticalNavHeader = props => {
   }
   const MenuLockedIcon = () => userMenuLockedIcon || <Icon icon='tabler:circle-dot' />
   const MenuUnlockedIcon = () => userMenuUnlockedIcon || <Icon icon='tabler:circle' />
-
+  const hidden1 = useMediaQuery(theme => theme.breakpoints.down('md'))
+  
   return (
     <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft(), ...conditionalColors() }}>
       {userNavMenuBranding ? (
@@ -96,7 +98,7 @@ const VerticalNavHeader = props => {
         <LinkStyled href='/dashboards/library'>
           <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2.5 }) }}>
             <img
-              src={PUBLIC_URL + '/images/lucass-logo.png'}
+              src={'/images/lucass-logo.png'}
               alt='logo'
               style={{ width: '100%', maxWidth: '200px', maxHeight: '7.5rem' }}
             />

@@ -18,6 +18,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 // ** Icon Imports
+import isEmpty from 'src/helper/is-empty'
 import Icon from 'src/@core/components/icon'
 import {Divider} from '@mui/material'
 import {BASE_URL} from 'src/configs'
@@ -58,7 +59,7 @@ const PaymentsTable = () => {
                      </TableRow>
                   </TableHead>
                   <TableBody>
-                     {rows.map((row, index) => (
+                     {!isEmpty(rows) && rows.map((row, index) => (
                         <TableRow key={row._id}>
                            <TableCell component="th" scope="row">
                               {index + 1}
